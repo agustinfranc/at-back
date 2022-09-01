@@ -73,11 +73,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Useful commands
 
--   php artisan make:model Flight --migration
+-   sail artisan make:model Flight --migration
 -   Generate a model, FlightController resource class, and form request classes...
-    php artisan make:model Flight --controller --resource --requests
+    sail artisan make:model Flight --controller --resource --requests
 -   Generate a model and a migration, factory, seeder, and controller...
-    php artisan make:model Flight -mfsc
+    sail artisan make:model Flight -mfsc
 -   Shortcut to generate a model, migration, factory, seeder, policy, controller, and form requests...
-    php artisan make:model Flight --all
--   php artisan migrate:fresh --seed
+    sail artisan make:model Flight --all
