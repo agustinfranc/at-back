@@ -24,7 +24,7 @@ class UpdateClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|uuid',
+            'id' => 'required',
             'name' => 'required|string|size:60',
             'dni' => 'required|integer|min_digits:8|max_digits:9',
             'phone' => 'required|integer|min_digits:8|max_digits:13',

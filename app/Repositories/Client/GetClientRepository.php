@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository\Client;
+namespace App\Repositories\Client;
 
 use App\Models\Client;
 
