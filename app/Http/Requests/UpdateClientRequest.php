@@ -24,7 +24,13 @@ class UpdateClientRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required',
+            'name' => 'required|string|size:60',
+            'dni' => 'required|integer|min_digits:8|max_digits:9',
+            'phone' => 'required|integer|min_digits:8|max_digits:13',
+            'rate' => 'required|float|min_digits:1|max_digits:5',
+            'taxable' => 'integer|min_digits:1|max_digits:3',
+            'comments' => 'string|size:280',
         ];
     }
 }
