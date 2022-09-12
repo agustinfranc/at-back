@@ -31,14 +31,7 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        $clientDetails = $request->only([
-            'name',
-            'dni',
-            'phone',
-            'rate',
-            'taxable',
-            'comments'
-        ]);
+        $clientDetails = $request->collect();
         return StoreClientRepository::createClient($clientDetails);
     }
 
