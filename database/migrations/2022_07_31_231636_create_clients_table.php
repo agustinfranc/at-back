@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('phone');
             $table->float('rate', 10, 2);
             $table->integer('taxable');
-            $table->string('comments');
+            $table->string('comments')->nullable();
             $table->timestamps();
         });
     }

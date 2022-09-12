@@ -6,9 +6,13 @@ use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
 use App\Repositories\Client\GetClientRepository;
+use App\Repositories\Client\StoreClientRepository;
+
 
 class ClientController extends Controller
 {
+
+    public function __construct(private StoreClientRepository $storeRepository){}
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +31,17 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        //
+        $clientDetails = $request->only([
+            'name',
+            'dni',
+            'phone',
+            'rate',
+            'taxable',
+            'comments'
+        ]);
+        return StoreClientRepository::createClient($clientDetails);
     }
+
 
     /**
      * Display the specified resource.
