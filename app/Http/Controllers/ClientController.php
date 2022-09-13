@@ -32,7 +32,7 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
         $clientDetails = $request->collect();
-        return StoreClientRepository::createClient($clientDetails);
+        return StoreClientRepository::store($clientDetails);
     }
 
 

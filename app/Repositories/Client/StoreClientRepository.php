@@ -7,8 +7,8 @@ use Illuminate\Support\Collection;
 
 class StoreClientRepository 
 {
-    public static function createClient(Collection $client)
+    public static function store(Collection $client)
     {
-        return Client::create($client->all());
+        return Client::updateOrCreate($client->all());
     }
 }
