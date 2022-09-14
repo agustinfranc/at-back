@@ -12,7 +12,7 @@ use App\Repositories\Client\StoreClientRepository;
 class ClientController extends Controller
 {
 
-    public function __construct(private StoreClientRepository $storeRepository){}
+    public function __construct(private StoreClientRepository $storeRepository) {}
     /**
      * Display a listing of the resource.
      *
@@ -31,8 +31,7 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        $clientDetails = $request->collect();
-        return StoreClientRepository::store($clientDetails);
+        return StoreClientRepository::store($request->collect());
     }
 
 
