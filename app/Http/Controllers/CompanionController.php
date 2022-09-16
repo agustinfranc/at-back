@@ -37,7 +37,6 @@ class CompanionController extends Controller
         return $this->storeRepository::store($request->collect());
     }
 
-
     /**
      * Display the specified resource.
      *
