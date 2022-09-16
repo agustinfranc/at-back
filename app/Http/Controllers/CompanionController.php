@@ -16,6 +16,7 @@ class CompanionController extends Controller
         private readonly StoreCompanionRepository $storeRepository
     ) {
     }
+    
     /**
      * Display a listing of the resource.
      *
