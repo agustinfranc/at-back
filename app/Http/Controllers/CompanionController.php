@@ -16,7 +16,7 @@ class CompanionController extends Controller
         private readonly StoreCompanionRepository $storeRepository
     ) {
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +56,7 @@ class CompanionController extends Controller
      * @param  \App\Models\Companion  $companion
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCompanionRequest $request,Companion $companion)
+    public function update(UpdateCompanionRequest $request, Companion $companion)
     {
         //
     }
