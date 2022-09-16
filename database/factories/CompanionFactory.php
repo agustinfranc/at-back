@@ -21,7 +21,10 @@ class CompanionFactory extends Factory
             'dni' => fake()->numberBetween('1','99999999'),
             'phone' => fake()->numberBetween('1','99999999'),
             'max_taxable' => fake()->numberBetween('1','100'),
-            'extras' => fake()->numberBetween('1','100'),
+            'monotax' => fake()->boolean(),
+            'criminal_record' => fake()->boolean(),
+            'insurance' => fake()->boolean(),
+
         ];
     }
 }

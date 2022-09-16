@@ -29,7 +29,9 @@ class UpdateCompanionRequest extends FormRequest
             'dni' => 'required|integer|digits_between:8,9',
             'phone' => 'required|integer|digits_between:8,13',
             'max_taxable' => 'integer|digits_between:1,10',
-            'extras' => 'integer|nullable|between:1,280',
+            'monotax' => 'boolean|nullable',
+            'criminal_record' => 'boolean|nullable',
+            'insurance' => 'boolean|nullable',
         ];
     }
 }
