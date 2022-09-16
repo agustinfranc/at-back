@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('phone');
             $table->integer('max_taxable');
             $table->boolean('monotax');
-            $table->boolean('monotax');
             $table->boolean('criminal_record');
             $table->boolean('insurance');
             $table->timestamps();
