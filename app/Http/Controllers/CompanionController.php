@@ -11,7 +11,11 @@ use App\Repositories\Companion\StoreCompanionRepository;
 
 class CompanionController extends Controller
 {
-    public function __construct(private StoreCompanionRepository $storeRepository) {}
+    public function __construct(
+        private readonly GetCompanionRepository $getRepository,
+        private readonly StoreCompanionRepository $storeRepository
+    ) {
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +23,7 @@ class CompanionController extends Controller
      */
     public function index()
     {
-        return GetCompanionRepository::getAll();
+        return $this->getRepository::getAll();
     }
 
     /**
@@ -30,7 +34,7 @@ class CompanionController extends Controller
      */
     public function store(StoreCompanionRequest $request)
     {
-        return StoreCompanionRepository::store($request->collect());
+        return $this->storeRepository::store($request->collect());
     }
 
 

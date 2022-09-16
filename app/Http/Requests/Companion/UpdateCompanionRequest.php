@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Companion;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,7 @@ class UpdateCompanionRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required',
+            'id' => 'required|integer',
             'name' => 'required|string|between:1,60',
             'dni' => 'required|integer|digits_between:8,9',
             'phone' => 'required|integer|digits_between:8,13',

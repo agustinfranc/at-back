@@ -19,7 +19,10 @@ return new class extends Migration
             $table->integer('dni');
             $table->integer('phone');
             $table->integer('max_taxable');
-            $table->integer('extras');
+            $table->boolean('monotax');
+            $table->boolean('monotax');
+            $table->boolean('criminal_record');
+            $table->boolean('insurance');
             $table->timestamps();
         });
     }
