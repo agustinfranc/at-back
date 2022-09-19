@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Companion;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreClientRequest extends FormRequest
+class StoreCompanionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,9 +27,10 @@ class StoreClientRequest extends FormRequest
             'name' => 'required|string|between:1,60',
             'dni' => 'required|integer|digits_between:8,9',
             'phone' => 'required|integer|digits_between:8,13',
-            'rate' => 'required|digits_between:1,5',
-            'taxable' => 'integer|digits_between:1,3',
-            'comments' => 'string|nullable|between:1,280',
+            'max_taxable' => 'integer|digits_between:1,10',
+            'monotax' => 'boolean|nullable',
+            'criminal_record' => 'boolean|nullable',
+            'insurance' => 'boolean|nullable',
         ];
     }
 }
