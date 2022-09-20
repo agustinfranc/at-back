@@ -1,14 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreClientRequest;
-use App\Http\Requests\UpdateClientRequest;
+use App\Http\Requests\Client\StoreClientRequest;
+use App\Http\Requests\Client\UpdateClientRequest;
 use App\Models\Client;
 use App\Repositories\Client\GetClientRepository;
+use App\Repositories\Client\StoreClientRepository;
+
 
 class ClientController extends Controller
 {
+    public function __construct(
+        private readonly GetClientRepository $getRepository,
+        private readonly StoreClientRepository $storeRepository
+    ) {
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +26,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return GetClientRepository::getAll();
+        return $this->getRepository::getAll();
     }
 
     /**
@@ -27,7 +37,7 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        //
+        return $this->storeRepository::store($request->collect());
     }
 
     /**

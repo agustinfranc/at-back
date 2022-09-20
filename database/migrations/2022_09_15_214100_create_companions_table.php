@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->id('id');
+        Schema::create('companions', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
             $table->integer('dni');
             $table->integer('phone');
-            $table->float('rate', 10, 2);
-            $table->integer('taxable');
-            $table->string('comments')->nullable();
+            $table->integer('max_taxable')->nullable();
+            $table->boolean('monotax')->nullable();
+            $table->boolean('criminal_record')->nullable();
+            $table->boolean('insurance')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('companions');
     }
 };
