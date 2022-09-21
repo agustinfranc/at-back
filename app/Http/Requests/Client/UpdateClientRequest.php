@@ -25,12 +25,12 @@ class UpdateClientRequest extends FormRequest
     {
         return [
             'id' => 'required|integer',
-            'name' => 'required|string|size:60',
-            'dni' => 'required|integer|min_digits:8|max_digits:9',
-            'phone' => 'required|integer|min_digits:8|max_digits:13',
+            'name' => 'required|string|between:1,80',
+            'dni' => 'required|integer|min_digits:6|max_digits:9',
+            'phone' => 'required|integer|min_digits:8|max_digits:14',
             'rate' => 'required|float|min_digits:1|max_digits:5',
             'taxable' => 'integer|min_digits:1|max_digits:3',
-            'comments' => 'string|size:280',
+            'comments' => 'string|nullable|between:1,280',
         ];
     }
 }
