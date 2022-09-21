@@ -24,9 +24,9 @@ class StoreCompanionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|between:1,60',
-            'dni' => 'required|integer|digits_between:8,9',
-            'phone' => 'required|integer|digits_between:8,13',
+            'name' => 'required|string|between:1,80',
+            'dni' => 'required|integer|digits_between:6,9',
+            'phone' => 'required|integer|digits_between:8,14',
             'max_taxable' => 'integer|digits_between:1,10',
             'monotax' => 'boolean|nullable',
             'criminal_record' => 'boolean|nullable',
