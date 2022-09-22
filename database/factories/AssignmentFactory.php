@@ -17,7 +17,11 @@ class AssignmentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'client_id' => fake()->numberBetween('1','9999999'),
+            'companion_id' => fake()->numberBetween('1','99999'),
+            'periodic' => fake()->boolean(),
+            'enabled' => fake()->boolean(),
+            'hours' => fake()->numberBetween('1','24'),
         ];
     }
 }
