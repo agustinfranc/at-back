@@ -11,4 +11,8 @@ class Companion extends Model
 
     protected $fillable = ['name','dni','phone','max_taxable','monotax','criminal_record','insurance'];
 
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
 }

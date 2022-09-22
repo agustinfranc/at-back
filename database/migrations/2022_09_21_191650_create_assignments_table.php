@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Client::class);
             $table->foreignIdFor(Companion::class);
+            $table->integer('hours');
             $table->boolean('periodic');
             $table->boolean('enabled');
             $table->timestamps();

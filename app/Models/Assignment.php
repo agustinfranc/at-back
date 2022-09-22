@@ -11,11 +11,11 @@ class Assignment extends Model
 
     public function client()
     {
-        return $this->hasOne(Client::class);
+        return $this->belongsTo(Client::class);
     }
 
     public function companion()
     {
-        return $this->hasOne(Companion::class);
+        return $this->belongsTo(Companion::class);
     }
 }
