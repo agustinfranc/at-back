@@ -9,6 +9,6 @@ class Companion extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','dni','phone','max_taxable','monotax','criminal_record','insurance'];
+    protected $fillable = ['name','cuit','nationality','birth','phone','max_taxable','monotax','criminal_record','insurance'];
 
 }
