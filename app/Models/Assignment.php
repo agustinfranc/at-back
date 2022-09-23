@@ -18,4 +18,9 @@ class Assignment extends Model
     {
         return $this->belongsTo(Companion::class);
     }
+
+    public function weekdays()
+    {
+        return $this->belongsTo(Weekdays::class);
+    }
 }
