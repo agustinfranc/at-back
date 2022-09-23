@@ -28,6 +28,9 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropColumns(['nationality','cuit','birth']);
+        Schema::table('companions',function(Blueprint $table){
+            $table->integer('dni');
+        });
     }
 };
