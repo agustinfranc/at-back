@@ -25,13 +25,13 @@ class UpdateAssignmentWeekdayRequest extends FormRequest
     {
         return [
             'id' => 'required|integer',
-            'monday' => 'required|boolean',
-            'tuesday' => 'required|boolean',
-            'wednesday' => 'required|boolean',
-            'thursday' => 'required|boolean',
-            'friday' => 'required|boolean',
-            'saturday' => 'required|boolean',
-            'sunday' => 'required|boolean',
+            'monday' => 'boolean|nullable',
+            'tuesday' => 'boolean|nullable',
+            'wednesday' => 'boolean|nullable',
+            'thursday' => 'boolean|nullable',
+            'friday' => 'boolean|nullable',
+            'saturday' => 'boolean|nullable',
+            'sunday' => 'boolean|nullable',
         ];
     }
 }
