@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('criminal_record')->nullable();
             $table->boolean('insurance')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

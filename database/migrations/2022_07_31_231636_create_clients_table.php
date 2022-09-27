@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('taxable');
             $table->string('comments')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
