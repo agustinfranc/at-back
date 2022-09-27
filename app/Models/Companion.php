@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Companion extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = ['name','cuit','nationality','birth','phone','max_taxable','monotax','criminal_record','insurance'];
 
