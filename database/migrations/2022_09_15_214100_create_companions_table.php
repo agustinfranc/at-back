@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('companions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->integer('dni');
             $table->integer('phone');
             $table->integer('max_taxable')->nullable();
