@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanionController;
 use Illuminate\Http\Request;
@@ -26,4 +27,8 @@ Route::apiResources([
 
 Route::apiResources([
     'companions' => CompanionController::class,
+]);
+
+Route::apiResources([
+    'assignments' => AssignmentController::class,
 ]);

@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('weekdays', function (Blueprint $table) {
             $table->id();
-            $table->boolean('Monday');
-            $table->boolean('Tuesday');
-            $table->boolean('Wednesday');
-            $table->boolean('Thursday');
-            $table->boolean('Friday');
-            $table->boolean('Saturday');
-            $table->boolean('Sunday');
+            $table->boolean('Monday')->nullable();
+            $table->boolean('Tuesday')->nullable();
+            $table->boolean('Wednesday')->nullable();
+            $table->boolean('Thursday')->nullable();
+            $table->boolean('Friday')->nullable();
+            $table->boolean('Saturday')->nullable();
+            $table->boolean('Sunday')->nullable();
 
             $table->timestamps();
         });

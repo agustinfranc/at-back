@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreWeekdaysRequest extends FormRequest
+class StoreAssignmentWeekdayRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreWeekdaysRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreWeekdaysRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'monday' => 'required|boolean',
+            'tuesday' => 'required|boolean',
+            'wednesday' => 'required|boolean',
+            'thursday' => 'required|boolean',
+            'friday' => 'required|boolean',
+            'saturday' => 'required|boolean',
+            'sunday' => 'required|boolean',
         ];
     }
 }
