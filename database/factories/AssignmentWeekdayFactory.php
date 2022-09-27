@@ -17,7 +17,13 @@ class WeekdaysFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'monday' => fake()->boolean(),
+            'tuesday' => fake()->boolean(),
+            'wednesday' => fake()->boolean(),
+            'thursday' => fake()->boolean(),
+            'friday' => fake()->boolean(),
+            'saturday' => fake()->boolean(),
+            'sunday' => fake()->boolean(),
         ];
     }
 }

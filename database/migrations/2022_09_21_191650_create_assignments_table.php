@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\AssignmentWeekday;
 use App\Models\Client;
 use App\Models\Companion;
-use App\Models\Weekdays;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Client::class);
             $table->foreignIdFor(Companion::class);
-            $table->foreignIdFor(Weekdays::class);
+            $table->foreignIdFor(AssignmentWeekday::class);
             $table->integer('hours');
             $table->boolean('periodic');
             $table->boolean('enabled');

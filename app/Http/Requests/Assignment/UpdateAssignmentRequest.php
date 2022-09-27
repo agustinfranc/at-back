@@ -27,6 +27,7 @@ class UpdateAssignmentRequest extends FormRequest
             'id' => 'required|integer',
             'client_id' => 'required|integer',
             'companion_id' => 'required|integer',
+            'weekday_id' => 'required|integer',
             'periodic' => 'required|boolean',
             'enabled' => 'required|boolean',
             'hours' => 'required|integer|max:24',
