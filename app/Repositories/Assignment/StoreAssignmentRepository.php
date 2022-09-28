@@ -7,7 +7,7 @@ namespace App\Repositories\Assignment;
 use App\Models\Assignment;
 use Illuminate\Support\Collection;
 
-class StoreAssigmentRepository 
+class StoreAssignmentRepository 
 {
     public static function store(Collection $assignment)
     {

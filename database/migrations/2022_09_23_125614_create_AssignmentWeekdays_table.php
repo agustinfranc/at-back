@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('weekdays', function (Blueprint $table) {
+        Schema::create('assignment_weekdays', function (Blueprint $table) {
             $table->id();
             $table->boolean('Monday')->nullable();
             $table->boolean('Tuesday')->nullable();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weekdays');
+        Schema::dropIfExists('AssignmentWeekdays');
     }
 };

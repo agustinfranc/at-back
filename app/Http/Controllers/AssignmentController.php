@@ -8,13 +8,13 @@ use App\Http\Requests\Assignment\StoreAssignmentRequest;
 use App\Http\Requests\Assignment\UpdateAssignmentRequest;
 use App\Models\Assignment;
 use App\Repositories\Assignment\GetAssignmentRepository;
-use App\Repositories\Assignment\StoreAssigmentRepository;
+use App\Repositories\Assignment\StoreAssignmentRepository;
 
 class AssignmentController extends Controller
 {
   public function __construct(
     private readonly GetAssignmentRepository $getRepository,
-    private readonly StoreAssigmentRepository $storeRepository
+    private readonly StoreAssignmentRepository $storeRepository
 ) {
 }
 
