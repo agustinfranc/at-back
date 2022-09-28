@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('guardian_name')->nullable();
             $table->string('extra_phone')->nullable();
-            $table->date('birth')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('medicine')->nullable();
             $table->string('diagnosis')->nullable();
             $table->string('job_description')->nullable();
@@ -34,7 +34,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropColumns(['address','guardian_name','birth','medicine','diagnosis',
+        Schema::dropColumns(['address','guardian_name','birthday','medicine','diagnosis',
         'job_description','health_insurance','affiliate','budget_date']);
     }
 };

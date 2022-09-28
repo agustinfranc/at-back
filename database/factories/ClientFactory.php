@@ -26,7 +26,7 @@ class ClientFactory extends Factory
             'address' =>fake()->words(2, true),
             'guardian_name' => fake()->name(),
             'extra_phone' => fake()->numberBetween('1','99999999'),
-            'birth' => fake()->date(),
+            'birthday' => fake()->date(),
             'medicine' => fake()->words(2, true),
             'diagnosis' => fake()->words(2, true),
             'job_description' => fake()->words(5, true),
