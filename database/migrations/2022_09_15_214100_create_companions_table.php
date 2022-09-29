@@ -16,12 +16,15 @@ return new class extends Migration
         Schema::create('companions', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->integer('dni');
-            $table->integer('phone');
+            $table->string('phone')->nullable();
             $table->integer('max_taxable')->nullable();
             $table->boolean('monotax')->nullable();
             $table->boolean('criminal_record')->nullable();
             $table->boolean('insurance')->nullable();
+            $table->string('nationality');
+            $table->integer('cuit');
+            $table->date('birthday');
+            $table->boolean('has_sign_contract');
             $table->timestamps();
             $table->softDeletes();
         });
