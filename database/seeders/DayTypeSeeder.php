@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DayTypeSeeder extends Seeder
 {
@@ -14,6 +15,14 @@ class DayTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('day_types')->insert([
+            ['value' => 0, 'title' => "Domingo"],
+            ['value' => 1, 'title' => "Lunes"],
+            ['value' => 2, 'title' => "Martes"],
+            ['value' => 3, 'title' => "Miercoles"],
+            ['value' => 4, 'title' => "Jueves"],
+            ['value' => 5, 'title' => "Viernes"],
+            ['value' => 6, 'title' => "Sabado"],
+        ]);
     }
 }

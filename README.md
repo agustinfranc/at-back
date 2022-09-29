@@ -81,3 +81,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -   Shortcut to generate a model, migration, factory, seeder, policy, controller, and form requests...
     sail artisan make:model Flight --all
 -   Fresh migrate and run seeders: ./vendor/bin/sail artisan migrate:fresh --seed
+
+## Links
+
+- https://fakerphp.github.io/

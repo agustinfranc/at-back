@@ -23,7 +23,6 @@ class AssignmentFactory extends Factory
             'companion_id' => Companion::factory(),
             'periodic' => fake()->boolean(),
             'enabled' => fake()->boolean(),
-            'hours' => fake()->numberBetween('1', '24'),
         ];
     }
 }

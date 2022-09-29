@@ -17,7 +17,7 @@ class DayFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'day_type_id' => fake()->numberBetween('0', '7'),
         ];
     }
 }
