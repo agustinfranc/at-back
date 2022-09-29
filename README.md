@@ -80,6 +80,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     sail artisan make:model Flight -mfsc
 -   Shortcut to generate a model, migration, factory, seeder, policy, controller, and form requests...
     sail artisan make:model Flight --all
+-   Run migrations: ./vendor/bin/sail artisan migrate
 -   Fresh migrate and run seeders: ./vendor/bin/sail artisan migrate:fresh --seed
 
 ## Links
