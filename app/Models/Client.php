@@ -17,4 +17,9 @@ class Client extends Model
     {
         return $this->hasMany(Assignment::class);
     }
+
+    public function companions()
+    {
+        return $this->belongsToMany(Companion::class)->using(Assignment::class);
+    }
 }

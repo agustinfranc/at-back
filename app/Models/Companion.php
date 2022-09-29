@@ -10,10 +10,15 @@ class Companion extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name','cuit','nationality','birth','phone','max_taxable','monotax','criminal_record','insurance'];
+    protected $fillable = ['name', 'cuit', 'nationality', 'birth', 'phone', 'max_taxable', 'monotax', 'criminal_record', 'insurance'];
 
     public function assignments()
     {
         return $this->hasMany(Assignment::class);
+    }
+
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class)->using(Assignment::class);
     }
 }

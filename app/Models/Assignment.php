@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Assignment extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $with = ['client', 'companion'];
 
@@ -19,5 +20,10 @@ class Assignment extends Model
     public function companion()
     {
         return $this->belongsTo(Companion::class);
+    }
+
+    public function days()
+    {
+        return $this->belongsToMany(Day::class);
     }
 }

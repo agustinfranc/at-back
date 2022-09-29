@@ -9,4 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Day extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function assignments()
+    {
+        return $this->belongsToMany(Assignment::class)
+            ->withPivot('hours', 'from', 'to')
+            ->withTimestamps();
+    }
 }

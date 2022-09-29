@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Client;
-use App\Models\Companion;
+use App\Models\Assignment;
+use App\Models\Day;
+use App\Models\DayType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,14 +16,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('assignments', function (Blueprint $table) {
+        Schema::create('assignment_day', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Client::class);
-            $table->foreignIdFor(Companion::class);
+            $table->foreignIdFor(Assignment::class);
+            $table->foreignIdFor(Day::class);
             $table->integer('hours');
-            $table->boolean('periodic');
-            $table->boolean('enabled');
+            $table->time('from');
+            $table->time('to');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assignments');
+        Schema::dropIfExists('assignment_day');
     }
 };
