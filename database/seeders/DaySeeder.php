@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class WeekdaysSeeder extends Seeder
+class DaySeeder extends Seeder
 {
     /**
      * Run the database seeds.

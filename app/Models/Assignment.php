@@ -9,7 +9,7 @@ class Assignment extends Model
 {
     use HasFactory;
 
-    protected $with = ['client','companion','assignmentWeekday'];
+    protected $with = ['client', 'companion'];
 
     public function client()
     {
@@ -19,10 +19,5 @@ class Assignment extends Model
     public function companion()
     {
         return $this->belongsTo(Companion::class);
-    }
-
-    public function assignmentWeekday()
-    {
-        return $this->belongsTo(AssignmentWeekday::class);
     }
 }
