@@ -18,12 +18,12 @@ class CompanionFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'cuit' => fake()->numberBetween('1','99999999'),
-            'nationality' => fake()->words(1,true),
-            'birth' => fake()->date(),
+            'cuit' => fake()->numberBetween('1', '99999999'),
+            'nationality' => fake()->words(1, true),
+            'birthday' => fake()->date(),
             'has_sign_contract' => fake()->boolean(),
-            'phone' => fake()->numberBetween('1','99999999'),
-            'max_taxable' => fake()->numberBetween('1','100'),
+            'phone' => fake()->numberBetween('1', '99999999'),
+            'max_taxable' => fake()->numberBetween('1', '100'),
             'monotax' => fake()->boolean(),
             'criminal_record' => fake()->boolean(),
             'insurance' => fake()->boolean(),
