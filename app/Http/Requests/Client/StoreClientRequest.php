@@ -36,9 +36,9 @@ class StoreClientRequest extends FormRequest
             'birthday' => 'required|date|after:1900-03-29T05:50:06',
             'medicine' => 'string|nullable|between:1,100',
             'diagnosis' => 'string|nullable|between:1,80',
-            'job_description' => 'string|nullable|between:1,80',
+            'treatment' => 'string|nullable|between:1,80',
             'health_insurance' => 'string|nullable|between:1,20',
-            'affiliate' => 'string|nullable|between:1,80' ,
+            'affiliate' => 'string|nullable|between:1,80',
             'budget_date' => 'required|date|after:1900-03-29T05:50:06',
         ];
     }
