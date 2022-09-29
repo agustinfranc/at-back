@@ -16,4 +16,9 @@ class Day extends Model
             ->withPivot('hours', 'from', 'to')
             ->withTimestamps();
     }
+
+    public function day_type()
+    {
+        return $this->belongsTo(DayType::class);
+    }
 }

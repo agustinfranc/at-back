@@ -10,6 +10,6 @@ class GetAssignmentRepository
 {
     public static function getAll()
     {
-        return Assignment::all();
+        return Assignment::with(['client', 'companion', 'days.day_type'])->get();
     }
 }
