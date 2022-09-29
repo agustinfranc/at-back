@@ -29,7 +29,7 @@ class ClientFactory extends Factory
             'birthday' => fake()->date(),
             'medicine' => fake()->words(2, true),
             'diagnosis' => fake()->words(2, true),
-            'job_description' => fake()->words(5, true),
+            'treatment' => fake()->words(5, true),
             'health_insurance' => fake()->words(1, true),
             'affiliate' => fake()->words(1, true),
             'budget_date' => fake()->date(),

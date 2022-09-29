@@ -10,6 +10,6 @@ class Companion extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name','cuit','nationality','birth','phone','max_taxable','monotax','criminal_record','insurance'];
+    protected $fillable = ['name','cuit','nationality','birth','phone','max_taxable','monotax','criminal_record','insurance','has_sign_contract'];
 
 }

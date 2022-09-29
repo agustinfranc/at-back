@@ -33,6 +33,7 @@ class StoreCompanionRequest extends FormRequest
             'monotax' => 'boolean|nullable',
             'criminal_record' => 'boolean|nullable',
             'insurance' => 'boolean|nullable',
+            'has_sign_contract'=> 'boolean|nullable',
         ];
     }
 }

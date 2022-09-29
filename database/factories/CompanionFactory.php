@@ -21,12 +21,13 @@ class CompanionFactory extends Factory
             'cuit' => fake()->numberBetween('1','99999999'),
             'nationality' => fake()->words(1,true),
             'birth' => fake()->date(),
+            'has_sign_contract' => fake()->boolean(),
             'phone' => fake()->numberBetween('1','99999999'),
             'max_taxable' => fake()->numberBetween('1','100'),
             'monotax' => fake()->boolean(),
             'criminal_record' => fake()->boolean(),
             'insurance' => fake()->boolean(),
-
+            'has_sign_contract' => fake()->boolean(),
         ];
     }
 }

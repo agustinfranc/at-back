@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nationality');
             $table->integer('cuit');
             $table->date('birth');
+            $table->boolean('has_sign_contract');
             $table->dropColumn('dni');
         });
     }
