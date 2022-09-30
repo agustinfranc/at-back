@@ -25,7 +25,7 @@ class StoreCompanionRequest extends FormRequest
     {
         return [
             'name' => 'required|string|between:1,80',
-            'cuit' => 'required|integer|digits_between:6,13',
+            'cuit' => 'required|string|between:6,13',
             'nationality' => 'required|string|between:1,50',
             'birthday' => 'required|date|after:1900-03-29T05:50:06',
             'phone' => 'required|string|between:1,50',

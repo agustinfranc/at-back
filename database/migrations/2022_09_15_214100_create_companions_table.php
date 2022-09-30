@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('criminal_record')->nullable();
             $table->boolean('insurance')->nullable();
             $table->string('nationality');
-            $table->integer('cuit');
+            $table->string('cuit');
             $table->date('birthday');
             $table->boolean('has_sign_contract');
             $table->timestamps();
