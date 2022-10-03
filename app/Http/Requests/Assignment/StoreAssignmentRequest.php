@@ -29,7 +29,7 @@ class StoreAssignmentRequest extends FormRequest
             'enabled' => 'required|boolean',
             'periodic' => 'required|boolean',
             'days' => 'required|array',
-            'days.*.day_id' => 'required|integer|distinct',
+            'days.*.id' => 'required|integer|distinct',
             'days.*.enabled' => 'required|boolean',
             'days.*.from' => 'nullable|string',
             'days.*.to' => 'nullable|string',

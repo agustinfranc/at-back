@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreignIdFor(Assignment::class);
             $table->foreignIdFor(Day::class);
             $table->integer('hours');
-            $table->time('from');
-            $table->time('to');
+            $table->time('from')->nullable();
+            $table->time('to')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

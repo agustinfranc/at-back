@@ -13,23 +13,21 @@ final class StoreAssignmentRepository
     {
         $assignment->fill($input->all());
 
-        self::storeDays($input);
-
         $assignment->saveOrFail();
+
+        self::storeDays($input, $assignment);
 
         return $assignment;
     }
 
     private static function storeDays(Collection $input, Assignment $assignment)
     {
-        if (empty($input['product_prices'])) {
+        if (empty($input['days'])) {
             return $assignment;
         }
 
-        // logger($input);
-        collect($input['days'])->each(function ($day) use ($assignment) {
-            // logger($day);
-            // $assignment->days()
-        });
+        // le paso un array asi con todos
+        // el primer numero es el id de la tabla days, lo demas son otros datos
+        $assignment->days()->sync([1 => ['hours' => 23], 2 => ['hours' => 22]]);
     }
 }
