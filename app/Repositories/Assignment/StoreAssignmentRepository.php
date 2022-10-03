@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories\Assignment;
 
+use App\Exceptions\AlreadyExistPeriodicAssignment;
 use App\Models\Assignment;
 use Illuminate\Support\Collection;
 
@@ -18,30 +19,34 @@ final class StoreAssignmentRepository
         if ($this->readRepository
             ->existPeriodicAssignment($input['client_id'], $input['companion_id'])
         ) {
-            abort(
-                422,
-                'Ya existe una asignacion periodica para el cliente y acompañante seleccionados.'
-            );
+            throw new AlreadyExistPeriodicAssignment();
+            // $assignment = $this->readRepository->existPeriodicAssignment($input['client_id'], $input['companion_id']);
         }
 
         $assignment->fill($input->all());
 
         $assignment->saveOrFail();
 
-        $this->storeDays($input, $assignment);
+        $this->_storeDays($input, $assignment);
 
         return $assignment;
     }
 
-    private function storeDays(Collection $input, Assignment $assignment)
+    private function _storeDays(Collection $input, Assignment $assignment)
     {
         if (empty($input['days'])) {
             return $assignment;
         }
 
-        // TODO: terminar:
-        // le paso un array asi con todos
-        // el primer numero es el id de la tabla days, lo demas son otros datos
-        $assignment->days()->sync([1 => ['hours' => 23], 2 => ['hours' => 22]]);
+        $assignmentDays = [];
+
+        foreach ($input['days'] as $day) {
+            if (true === $day['enabled']) {
+                // $assignmentDays[$day['id']] = ['hours' => $day['hours']];
+                $assignmentDays[$day['id']] = collect($day)->only(['hours', 'from', 'to'])->toArray();
+            }
+        }
+
+        $assignment->days()->sync($assignmentDays);
     }
 }
