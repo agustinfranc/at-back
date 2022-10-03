@@ -17,8 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ClientSeeder::class);
         $this->call(CompanionSeeder::class);
-        $this->call(AssignmentSeeder::class);
-        $this->call(DayTypeSeeder::class);
+        $this->call(DaySeeder::class);
         $this->call(AssignmentDaySeeder::class);
     }
 }

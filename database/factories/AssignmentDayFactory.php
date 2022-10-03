@@ -20,7 +20,7 @@ class AssignmentDayFactory extends Factory
     {
         return [
             'assignment_id' => Assignment::factory(),
-            'day_id' => Day::factory(),
+            'day_id' => fake()->numberBetween('1', '7'),
             'hours' => fake()->numberBetween('1', '24'),
             'from' => fake()->time(),
             'to' => fake()->time(),

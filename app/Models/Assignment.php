@@ -24,6 +24,8 @@ class Assignment extends Model
 
     public function days()
     {
-        return $this->belongsToMany(Day::class);
+        return $this->belongsToMany(Day::class)
+            ->withPivot('hours', 'from', 'to')
+            ->withTimestamps();
     }
 }
