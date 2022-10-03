@@ -10,6 +10,8 @@ class Assignment extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $guarded = ['id'];
+
     public function client()
     {
         return $this->belongsTo(Client::class);

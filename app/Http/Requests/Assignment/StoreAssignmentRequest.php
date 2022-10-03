@@ -26,10 +26,14 @@ class StoreAssignmentRequest extends FormRequest
         return [
             'client_id' => 'required|integer',
             'companion_id' => 'required|integer',
-            'weekday_id' => 'required|integer',
-            'periodic' => 'required|boolean',
             'enabled' => 'required|boolean',
-            'hours' => 'required|integer|max:24',
+            'periodic' => 'required|boolean',
+            'days' => 'required|array',
+            'days.*.day_type_id' => 'required|integer|distinct',
+            'days.*.enabled' => 'required|boolean',
+            'days.*.from' => 'nullable|string',
+            'days.*.to' => 'nullable|string',
+            'days.*.hours' => 'required|integer',
         ];
     }
 }
