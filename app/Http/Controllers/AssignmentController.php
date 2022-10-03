@@ -37,7 +37,7 @@ class AssignmentController extends Controller
      */
     public function store(StoreAssignmentRequest $request)
     {
-        return $this->storeRepository::storeWithDays($request->collect(), new Assignment);
+        return $this->storeRepository->storeWithDays($request->collect(), new Assignment);
     }
 
     /**
