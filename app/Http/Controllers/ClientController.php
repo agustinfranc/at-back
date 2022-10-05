@@ -8,6 +8,7 @@ use App\Http\Requests\Client\StoreClientRequest;
 use App\Http\Requests\Client\UpdateClientRequest;
 use App\Models\Client;
 use App\Repositories\Client\GetClientRepository;
+use App\Repositories\Client\ShowClientRepository;
 use App\Repositories\Client\StoreClientRepository;
 
 
@@ -15,7 +16,8 @@ class ClientController extends Controller
 {
     public function __construct(
         private readonly GetClientRepository $getRepository,
-        private readonly StoreClientRepository $storeRepository
+        private readonly StoreClientRepository $storeRepository,
+        private readonly ShowClientRepository $showRepository
     ) {
     }
 
@@ -46,9 +48,9 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show($id)
     {
-        //
+        return $this->showRepository::show($id);
     }
 
     /**
