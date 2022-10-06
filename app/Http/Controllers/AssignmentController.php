@@ -8,6 +8,7 @@ use App\Http\Requests\Assignment\StoreAssignmentRequest;
 use App\Http\Requests\Assignment\UpdateAssignmentRequest;
 use App\Models\Assignment;
 use App\Repositories\Assignment\GetAssignmentRepository;
+use App\Repositories\Assignment\ShowAssignmentRepository;
 use App\Repositories\Assignment\StoreAssignmentRepository;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class AssignmentController extends Controller
 {
     public function __construct(
         private readonly GetAssignmentRepository $getRepository,
-        private readonly StoreAssignmentRepository $storeRepository
+        private readonly StoreAssignmentRepository $storeRepository,
+        private readonly ShowAssignmentRepository $showRepository,
     ) {
     }
 
@@ -46,9 +48,9 @@ class AssignmentController extends Controller
      * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function show(Assignment $assignment)
+    public function show($id)
     {
-        //
+        return $this->showRepository->show($id);
     }
 
     /**
