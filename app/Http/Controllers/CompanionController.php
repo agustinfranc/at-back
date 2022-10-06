@@ -6,6 +6,7 @@ use App\Http\Requests\Companion\StoreCompanionRequest;
 use App\Http\Requests\Companion\UpdateCompanionRequest;
 use App\Models\Companion;
 use App\Repositories\Companion\GetCompanionRepository;
+use App\Repositories\Companion\ShowCompanionRepository;
 use App\Repositories\Companion\StoreCompanionRepository;
 
 
@@ -13,7 +14,8 @@ class CompanionController extends Controller
 {
     public function __construct(
         private readonly GetCompanionRepository $getRepository,
-        private readonly StoreCompanionRepository $storeRepository
+        private readonly StoreCompanionRepository $storeRepository,
+        private readonly ShowCompanionRepository $showRepository,
     ) {
     }
 
@@ -44,9 +46,9 @@ class CompanionController extends Controller
      * @param  \App\Models\Companion $companion
      * @return \Illuminate\Http\Response
      */
-    public function show(Companion $companion)
+    public function show($id)
     {
-        //
+        return $this->showRepository::show($id);
     }
 
     /**
