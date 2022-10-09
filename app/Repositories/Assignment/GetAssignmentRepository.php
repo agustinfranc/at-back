@@ -13,6 +13,11 @@ class GetAssignmentRepository
         return Assignment::with(['client', 'companion', 'days'])->get();
     }
 
+    public static function getOne($id)
+    {
+        return Assignment::with(['client', 'companion', 'days'])->find($id);
+    }
+
     public static function existPeriodicAssignment($clientId, $companionId)
     {
         return Assignment::where('client_id', $clientId)
