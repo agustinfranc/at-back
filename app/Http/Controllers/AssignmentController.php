@@ -27,7 +27,7 @@ class AssignmentController extends Controller
      */
     public function index()
     {
-        return $this->getRepository::getAll();
+        return AssignmentResource::collection($this->getRepository::getAll());
     }
 
     /**
