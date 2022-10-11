@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Client\StoreClientRequest;
 use App\Http\Requests\Client\UpdateClientRequest;
+use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use App\Repositories\Client\GetClientRepository;
 use App\Repositories\Client\StoreClientRepository;
@@ -26,7 +27,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return $this->getRepository::getAll();
+        // TODO: crear nuevo resource para no enviar toda la data
+        return ClientResource::collection($this->getRepository::getAll());
     }
 
     /**
@@ -37,7 +39,9 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        return $this->storeRepository::store($request->collect());
+        return new ClientResource(
+            $this->storeRepository->store($request->collect())
+        );
     }
 
     /**
@@ -46,9 +50,9 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
-        return $this->getRepository::getOne($id);
+        return new ClientResource($client);
     }
 
     /**
