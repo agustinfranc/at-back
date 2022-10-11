@@ -9,6 +9,7 @@ use App\Http\Requests\Assignment\UpdateAssignmentRequest;
 use App\Models\Assignment;
 use App\Repositories\Assignment\GetAssignmentRepository;
 use App\Repositories\Assignment\StoreAssignmentRepository;
+use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
 {
