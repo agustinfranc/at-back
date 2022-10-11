@@ -12,4 +12,9 @@ class GetClientRepository
     {
         return Client::all();
     }
+
+    public static function show($id)
+    {
+        return Client::find($id);
+    }
 }
