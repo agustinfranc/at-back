@@ -13,7 +13,7 @@ class CompanionController extends Controller
 {
     public function __construct(
         private readonly GetCompanionRepository $getRepository,
-        private readonly StoreCompanionRepository $storeRepository,
+        private readonly StoreCompanionRepository $storeRepository
     ) {
     }
 
