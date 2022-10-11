@@ -15,7 +15,7 @@ class ClientController extends Controller
 {
     public function __construct(
         private readonly GetClientRepository $getRepository,
-        private readonly StoreClientRepository $storeRepository,
+        private readonly StoreClientRepository $storeRepository
     ) {
     }
 
