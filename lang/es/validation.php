@@ -167,6 +167,8 @@ return [
 
     'attributes' => [
         'phone' => 'telefono',
+        'rate' => 'tarifa por hora',
+        'taxable' => 'porcentaje facturado',
     ],
 
 ];
