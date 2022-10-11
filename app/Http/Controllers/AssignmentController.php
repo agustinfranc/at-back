@@ -45,7 +45,7 @@ class AssignmentController extends Controller
      * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Assignment $assignment)
     {
         //
     }
