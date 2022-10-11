@@ -13,7 +13,7 @@ class GetCompanionRepository
         return Companion::all();
     }
 
-    public static function show($id)
+    public static function getOne($id)
     {
         return Companion::find($id);
     }

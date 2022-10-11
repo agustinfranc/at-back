@@ -46,7 +46,7 @@ class CompanionController extends Controller
      */
     public function show($id)
     {
-        return $this->getRepository::show($id);
+        return $this->getRepository::getOne($id);
     }
 
     /**
