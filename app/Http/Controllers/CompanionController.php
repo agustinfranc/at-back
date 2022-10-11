@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Companion\StoreCompanionRequest;
 use App\Http\Requests\Companion\UpdateCompanionRequest;
+use App\Http\Resources\CompanionResource;
 use App\Models\Companion;
 use App\Repositories\Companion\GetCompanionRepository;
 use App\Repositories\Companion\StoreCompanionRepository;
@@ -24,7 +25,7 @@ class CompanionController extends Controller
      */
     public function index()
     {
-        return $this->getRepository::getAll();
+        return CompanionResource::collection($this->getRepository::getAll());
     }
 
     /**
@@ -35,7 +36,9 @@ class CompanionController extends Controller
      */
     public function store(StoreCompanionRequest $request)
     {
-        return $this->storeRepository::store($request->collect());
+        return new CompanionResource(
+            $this->storeRepository::store($request->collect())
+        );
     }
 
     /**
@@ -44,9 +47,9 @@ class CompanionController extends Controller
      * @param  \App\Models\Companion $companion
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Companion $companion)
     {
-        return $this->getRepository::getOne($id);
+        return new CompanionResource($companion);
     }
 
     /**
