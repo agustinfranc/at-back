@@ -12,6 +12,11 @@ class Assignment extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'periodic' => 'boolean',
+        'enabled' => 'boolean',
+    ];
+
     public function client()
     {
         return $this->belongsTo(Client::class);
