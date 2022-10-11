@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Assignment\StoreAssignmentRequest;
 use App\Http\Requests\Assignment\UpdateAssignmentRequest;
+use App\Http\Resources\AssignmentResource;
 use App\Models\Assignment;
 use App\Repositories\Assignment\GetAssignmentRepository;
 use App\Repositories\Assignment\StoreAssignmentRepository;
@@ -26,7 +27,7 @@ class AssignmentController extends Controller
      */
     public function index()
     {
-        return $this->getRepository::getAll();
+        return AssignmentResource::collection($this->getRepository::getAll());
     }
 
     /**
@@ -37,7 +38,9 @@ class AssignmentController extends Controller
      */
     public function store(StoreAssignmentRequest $request)
     {
-        return $this->storeRepository->storeWithDays($request->collect(), new Assignment);
+        return new AssignmentResource(
+            $this->storeRepository->storeWithDays($request->collect(), new Assignment)
+        );
     }
 
     /**
@@ -48,7 +51,7 @@ class AssignmentController extends Controller
      */
     public function show(Assignment $assignment)
     {
-        //
+        return new AssignmentResource($assignment);
     }
 
     /**

@@ -83,6 +83,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -   Run migrations: ./vendor/bin/sail artisan migrate
 -   Fresh migrate and run seeders: ./vendor/bin/sail artisan migrate:fresh --seed
 
-## Links
+## Useful Links
 
 - https://fakerphp.github.io/
+- https://laravel.com/docs/9.x/eloquent-resources#conditional-attributes include attribute if user is admin

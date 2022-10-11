@@ -7,6 +7,7 @@ namespace App\Repositories\Assignment;
 use App\Exceptions\AlreadyExistPeriodicAssignment;
 use App\Models\Assignment;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 final class StoreAssignmentRepository
 {
@@ -16,20 +17,30 @@ final class StoreAssignmentRepository
 
     public function storeWithDays(Collection $input, Assignment $assignment): Assignment
     {
-        if ($this->readRepository
+        if (
+            $input['periodic'] && $this->readRepository
             ->existPeriodicAssignment($input['client_id'], $input['companion_id'])
         ) {
             throw new AlreadyExistPeriodicAssignment();
-            // $assignment = $this->readRepository->existPeriodicAssignment($input['client_id'], $input['companion_id']);
         }
 
-        $assignment->fill($input->all());
+        DB::beginTransaction();
 
-        $assignment->saveOrFail();
+        try {
+            $assignment->fill($input->all());
 
-        $this->_storeDays($input, $assignment);
+            $assignment->save();
 
-        return $assignment;
+            $this->_storeDays($input, $assignment);
+
+            DB::commit();
+
+            return $assignment;
+        } catch (\Exception | \Throwable $e) {
+            DB::rollBack();
+
+            abort(500, $e->getMessage());
+        }
     }
 
     private function _storeDays(Collection $input, Assignment $assignment)
@@ -42,7 +53,6 @@ final class StoreAssignmentRepository
 
         foreach ($input['days'] as $day) {
             if (true === $day['enabled']) {
-                // $assignmentDays[$day['id']] = ['hours' => $day['hours']];
                 $assignmentDays[$day['id']] = collect($day)->only(['hours', 'from', 'to'])->toArray();
             }
         }
