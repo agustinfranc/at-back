@@ -44,9 +44,9 @@ class CompanionController extends Controller
      * @param  \App\Models\Companion $companion
      * @return \Illuminate\Http\Response
      */
-    public function show(Companion $companion)
+    public function show($id)
     {
-        //
+        return $this->getRepository::getOne($id);
     }
 
     /**
