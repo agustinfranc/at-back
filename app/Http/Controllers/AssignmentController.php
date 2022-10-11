@@ -14,7 +14,7 @@ class AssignmentController extends Controller
 {
     public function __construct(
         private readonly GetAssignmentRepository $getRepository,
-        private readonly StoreAssignmentRepository $storeRepository,
+        private readonly StoreAssignmentRepository $storeRepository
     ) {
     }
 
