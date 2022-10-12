@@ -30,10 +30,10 @@ class StoreCompanionRequest extends FormRequest
             'birthday' => 'required|date|after:1900-03-29T05:50:06',
             'phone' => 'required|string|between:1,50',
             'max_taxable' => 'integer|digits_between:1,10',
-            'monotax' => 'boolean|nullable',
-            'criminal_record' => 'boolean|nullable',
-            'insurance' => 'boolean|nullable',
-            'has_sign_contract' => 'boolean|nullable',
+            'monotax' => 'nullable|boolean',
+            'criminal_record' => 'nullable|boolean',
+            'insurance' => 'nullable|boolean',
+            'has_sign_contract' => 'nullable|boolean',
         ];
     }
 }
