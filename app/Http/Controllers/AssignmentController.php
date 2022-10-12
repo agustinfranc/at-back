@@ -63,7 +63,9 @@ class AssignmentController extends Controller
      */
     public function update(UpdateAssignmentRequest $request, Assignment $assignment)
     {
-        //
+        return new AssignmentResource(
+            $this->storeRepository->storeWithDays($request->collect(), $assignment)
+        );
     }
 
     /**
