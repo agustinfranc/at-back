@@ -29,7 +29,7 @@ class StoreCompanionRequest extends FormRequest
             'nationality' => 'required|string|between:1,50',
             'birthday' => 'required|date|after:1900-03-29T05:50:06',
             'phone' => 'required|string|between:1,50',
-            'max_taxable' => 'integer|numeric',
+            'max_taxable' => 'integer|digits_between:1,10',
             'monotax' => 'boolean|nullable',
             'criminal_record' => 'boolean|nullable',
             'insurance' => 'boolean|nullable',
