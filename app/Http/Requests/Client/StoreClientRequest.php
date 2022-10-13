@@ -26,7 +26,7 @@ class StoreClientRequest extends FormRequest
         return [
             'name' => 'required|string|between:1,80',
             'dni' => 'required|integer|digits_between:6,9',
-            'phone' => 'string|between:1,50',
+            'phone' => 'nullable|string|between:1,50',
             'extra_phone' => 'nullable|string|between:1,50',
             'rate' => 'nullable|numeric',
             'taxable' => 'required|integer|digits_between:1,3',

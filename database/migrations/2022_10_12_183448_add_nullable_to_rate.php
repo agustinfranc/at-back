@@ -27,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->float('rate', 10, 2);
+            $table->float('rate', 10, 2)->change();
         });
     }
 };
