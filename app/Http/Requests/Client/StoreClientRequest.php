@@ -29,7 +29,7 @@ class StoreClientRequest extends FormRequest
             'phone' => 'nullable|string|between:1,50',
             'extra_phone' => 'nullable|string|between:1,50',
             'rate' => 'nullable|numeric',
-            'taxable' => 'required|integer|digits_between:1,3',
+            'taxable' => 'nullable|integer|digits_between:1,3',
             'comments' => 'nullable|string|between:1,280',
             'address' => 'nullable|string|between:1,80',
             'guardian_name' => 'nullable|string|between:1,80',
