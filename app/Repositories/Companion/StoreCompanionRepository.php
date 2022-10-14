@@ -7,10 +7,15 @@ namespace App\Repositories\Companion;
 use App\Models\Companion;
 use Illuminate\Support\Collection;
 
-class StoreCompanionRepository 
+class StoreCompanionRepository
 {
     public static function store(Collection $companion)
     {
         return Companion::updateOrCreate($companion->all());
+    }
+
+    public function softDelete(Companion $companion): bool
+    {
+        return $companion->delete();
     }
 }

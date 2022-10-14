@@ -12,6 +12,16 @@ class Companion extends Model
 
     protected $fillable = ['name', 'cuit', 'nationality', 'birthday', 'phone', 'max_taxable', 'monotax', 'criminal_record', 'insurance', 'has_sign_contract'];
 
+    protected $casts = [
+        'cuit' => 'integer',
+        'phone' => 'integer',
+        'monotax' => 'boolean',
+        'monotax' => 'boolean',
+        'criminal_record' => 'boolean',
+        'insurance' => 'boolean',
+        'has_sign_contract' => 'boolean',
+    ];
+
     public function assignments()
     {
         return $this->hasMany(Assignment::class);
