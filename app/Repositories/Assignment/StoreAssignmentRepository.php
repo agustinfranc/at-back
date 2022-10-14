@@ -43,6 +43,11 @@ final class StoreAssignmentRepository
         }
     }
 
+    public function softDelete(Assignment $assignment): bool
+    {
+        return $assignment->delete();
+    }
+
     private function _storeDays(Collection $input, Assignment $assignment)
     {
         if (empty($input['days'])) {
