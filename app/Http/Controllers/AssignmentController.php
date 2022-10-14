@@ -76,6 +76,6 @@ class AssignmentController extends Controller
      */
     public function destroy(Assignment $assignment)
     {
-        //
+        return $this->storeRepository->softDelete($assignment);
     }
 }
