@@ -23,6 +23,12 @@ class UpdateAssignmentRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        $storeRules = (new StoreAssignmentRequest)->rules();
+
+        $localRules = [
+            'id' => 'required|integer',
+        ];
+
+        return array_merge($localRules, $storeRules);
     }
 }
