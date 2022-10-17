@@ -11,4 +11,9 @@ class StoreClientRepository
     {
         return Client::updateOrCreate($client->all());
     }
+
+    public function softDelete(Client $client): bool
+    {
+        return $client->delete();
+    }
 }
