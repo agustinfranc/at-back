@@ -9,7 +9,7 @@ class StoreClientRepository
 {
     public static function store(Collection $client)
     {
-        return Client::updateOrCreate($client->all());
+        return Client::updateOrCreate(['id'=>$client->pull('id')],$client->all());
     }
 
     public function softDelete(Client $client): bool
