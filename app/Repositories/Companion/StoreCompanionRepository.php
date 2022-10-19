@@ -11,7 +11,7 @@ class StoreCompanionRepository
 {
     public static function store(Collection $companion)
     {
-        return Companion::updateOrCreate(['id' => $companion->pull('id')],$companion->all());
+        return Companion::updateOrCreate(['id' => $companion->pull('id')], $companion->all());
     }
 
     public function softDelete(Companion $companion): bool

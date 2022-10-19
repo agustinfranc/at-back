@@ -16,8 +16,6 @@ class Client extends Model
         'treatment', 'health_insurance', 'affiliate', 'budget_date'
     ];
 
-    
-
     public function assignments()
     {
         return $this->hasMany(Assignment::class);
