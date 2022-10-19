@@ -64,7 +64,9 @@ class ClientController extends Controller
      */
     public function update(UpdateClientRequest $request, Client $client)
     {
-        //
+        return new ClientResource(
+            $this->storeRepository::store($request->collect(), $client)
+        );
     }
 
     /**
@@ -75,6 +77,6 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $this->storeRepository->softDelete($client);
     }
 }
