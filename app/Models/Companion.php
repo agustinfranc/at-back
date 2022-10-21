@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Companion extends Model
 {
@@ -30,5 +31,12 @@ class Companion extends Model
     public function clients()
     {
         return $this->belongsToMany(Client::class)->using(Assignment::class);
+    }
+
+    public function name(): Attribute
+    {
+        return Attribute::make(
+            set: fn($value) => ucwords($value)
+        );
     }
 }
