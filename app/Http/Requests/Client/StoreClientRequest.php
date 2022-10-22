@@ -24,7 +24,7 @@ class StoreClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|between:1,80',
+            'name' => 'required|string|between:1,80|unique:App\Models\Client,name',
             'dni' => 'required|integer|digits_between:6,9',
             'phone' => 'nullable|string|between:1,50',
             'extra_phone' => 'nullable|string|between:1,50',
