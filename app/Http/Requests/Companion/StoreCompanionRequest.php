@@ -24,7 +24,7 @@ class StoreCompanionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|between:1,80',
+            'name' => 'required|string|between:1,80|unique:App\Models\Companion,name',
             'cuit' => 'required|string|between:6,13',
             'nationality' => 'required|string|between:1,50',
             'birthday' => 'required|date|after:1900-03-29T05:50:06',
