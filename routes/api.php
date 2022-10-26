@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanionController;
 use Illuminate\Http\Request;
@@ -32,3 +33,7 @@ Route::apiResources([
 Route::apiResources([
     'assignments' => AssignmentController::class,
 ]);
+
+Route::get('balances/clients',[BalanceController::class,'getClientsBalance']);
+
+Route::get('balances/companions',[BalanceController::class,'getCompanionsBalance']);
