@@ -11,11 +11,11 @@ class GetUserRepository
 {
     public static function getAll(): Collection
     {
-        return User::all();
+        return User::with(['role'])->get();
     }
 
     public static function getOne(int $id): User
     {
-        return User::find($id);
+        return User::with(['role'])->find($id);
     }
 }
