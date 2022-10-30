@@ -24,6 +24,7 @@ class ClientResource extends JsonResource
             'comments' => $this->comments,
             'address' => $this->address,
             'guardian_name' => $this->guardian_name,
+            'extra_phone' => $this->extra_phone,
             'birthday' => $this->birthday,
             'medicine' => $this->medicine,
             'diagnosis' => $this->diagnosis,
