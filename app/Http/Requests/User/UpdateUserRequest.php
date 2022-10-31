@@ -25,6 +25,11 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'id' => 'required|integer',
+            'name' => 'required|string|between:1,80',
+            'email' => 'required|string|email|between:1,100',
+            'password' => 'sometimes|nullable|string|between:1,100',
+            'repeate_password' => 'sometimes|nullable|string|same:password',
+            'user_role_id' => 'required',
         ];
     }
 }
