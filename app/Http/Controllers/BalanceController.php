@@ -17,16 +17,20 @@ class BalanceController extends Controller
     }
 
     public function getClientsBalance() {
-        $assignments = $this->getAssignmentRepository::getAll();
         $clientsBalances = collect();
-        foreach($assignments as $assignment){
-            foreach($assignment->days as $day){
-                $total =+ $day->pivot->hours;
-            }
-            $rate = $assignment->client->rate;
-            $client = $assignment->client->name;
+        $clients = $this->getClientRepository::getAll();
+        $total = 0;
 
-            $clientsBalances->push(['name'=>$client,'debt'=>($rate*$total)]);
+        foreach($clients as $client){
+            $clientAssignments =  $client->assignments;
+            foreach($clientAssignments as $assignment){
+                foreach($assignment->days as $day){
+                    $total += $day->pivot->hours;
+                }
+            }
+
+            $rate = $client->rate;
+            $clientsBalances->push(['name'=>$client->name,'debt'=>($rate*$total)]);
         }
 
         return $clientsBalances;
