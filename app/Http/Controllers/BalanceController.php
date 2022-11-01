@@ -19,18 +19,18 @@ class BalanceController extends Controller
     public function getClientsBalance() {
         $clientsBalances = collect();
         $clients = $this->getClientRepository::getAll();
-        $total = 0;
+        $totalHours = 0;
 
         foreach($clients as $client){
             $clientAssignments =  $client->assignments;
             foreach($clientAssignments as $assignment){
                 foreach($assignment->days as $day){
-                    $total += $day->pivot->hours;
+                    $totalHours += $day->pivot->hours;
                 }
             }
 
             $rate = $client->rate;
-            $clientsBalances->push(['name'=>$client->name,'debt'=>($rate*$total)]);
+            $clientsBalances->push(['name'=>$client->name,'debt'=>($rate*$totalHours)]);
         }
 
         return $clientsBalances;
