@@ -21,7 +21,7 @@ class StoreUserRepository
         return $user->delete();
     }
 
-    private function _forgetPasswordWhenIsEmptytUpdate($input): Collection
+    private static function _forgetPasswordWhenIsEmptytUpdate($input): Collection
     {
         if (!$input->get('password')) {
             $input->forget('password');
