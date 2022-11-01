@@ -16,7 +16,7 @@ class StoreUserRepository
         return User::updateOrCreate(['id' => $input->pull('id')], $input->all());
     }
 
-    public function softDelete(User $user): bool
+    public static function softDelete(User $user): bool
     {
         return $user->delete();
     }
