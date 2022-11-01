@@ -38,7 +38,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         return new UserResource(
-            $this->storeRepository->store($request->collect())
+            $this->storeRepository::store($request->collect())
         );
     }
 
@@ -75,6 +75,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $this->storeRepository->softDelete($user);
+        $this->storeRepository::softDelete($user);
     }
 }
