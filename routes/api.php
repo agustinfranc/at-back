@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +32,8 @@ Route::apiResources([
 
 Route::apiResources([
     'assignments' => AssignmentController::class,
+]);
+
+Route::apiResources([
+    'users' => UserController::class,
 ]);
