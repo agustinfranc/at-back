@@ -12,6 +12,8 @@ class Assignment extends Model
 
     protected $guarded = ['id'];
 
+    protected $with = ['client'];
+
     protected $casts = [
         'periodic' => 'boolean',
         'enabled' => 'boolean',
