@@ -23,8 +23,13 @@ class UpdateCompanionRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $storeRules = (new StoreCompanionRequest())->rules();
+
+        $localRules = [
             'id' => 'required|integer',
+            'name' => 'required|string|between:1,80',
         ];
+
+        return array_merge($storeRules, $localRules);
     }
 }

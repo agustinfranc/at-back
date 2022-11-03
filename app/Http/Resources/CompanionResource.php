@@ -21,6 +21,8 @@ class CompanionResource extends JsonResource
       'nationality' => $this->nationality,
       'birthday' => $this->birthday,
       'phone' => $this->phone,
+      'extra_phone' => $this->extra_phone,
+      'extra_phone_reference' => $this->extra_phone_reference,
       'max_taxable' => $this->max_taxable,
       'monotax' => $this->monotax,
       'criminal_record' => $this->criminal_record,
