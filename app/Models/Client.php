@@ -12,10 +12,7 @@ class Client extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'name', 'dni', 'phone', 'rate', 'taxable', 'comments', 'address', 'guardian_name', 'extra_phone', 'birthday', 'medicine', 'diagnosis',
-        'treatment', 'health_insurance', 'affiliate', 'budget_date'
-    ];
+    protected $guarded = [];
 
     public function assignments()
     {
@@ -30,14 +27,14 @@ class Client extends Model
     public function name(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => ucwords($value)
+            set: fn ($value) => ucwords($value)
         );
     }
 
     public function guardianName(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => ucwords($value)
+            set: fn ($value) => ucwords($value)
         );
     }
 }

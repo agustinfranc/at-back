@@ -11,11 +11,10 @@ class Companion extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'cuit', 'nationality', 'birthday', 'phone', 'max_taxable', 'monotax', 'criminal_record', 'insurance', 'has_sign_contract'];
+    protected $guarded = [];
 
     protected $casts = [
         'cuit' => 'integer',
-        'phone' => 'integer',
         'monotax' => 'boolean',
         'monotax' => 'boolean',
         'criminal_record' => 'boolean',
@@ -36,7 +35,7 @@ class Companion extends Model
     public function name(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => ucwords($value)
+            set: fn ($value) => ucwords($value)
         );
     }
 }
