@@ -22,7 +22,6 @@ class GetAssignmentRepository
     {
         return Assignment::where('client_id', $clientId)
             ->where('companion_id', $companionId)
-            ->where('periodic', 1)
             ->first();
     }
 }

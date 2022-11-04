@@ -27,7 +27,6 @@ class StoreAssignmentRequest extends FormRequest
             'client_id' => 'required|integer',
             'companion_id' => 'required|integer',
             'enabled' => 'required|boolean',
-            'periodic' => 'required|boolean',
             'days' => 'required|array',
             'days.*.id' => 'required|integer|distinct',
             'days.*.enabled' => 'required|boolean',

@@ -13,7 +13,6 @@ class Assignment extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'periodic' => 'boolean',
         'enabled' => 'boolean',
     ];
 
