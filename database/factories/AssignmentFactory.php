@@ -21,7 +21,6 @@ class AssignmentFactory extends Factory
         return [
             'client_id' => Client::factory(),
             'companion_id' => Companion::factory(),
-            'periodic' => fake()->boolean(),
             'enabled' => fake()->boolean(),
         ];
     }
