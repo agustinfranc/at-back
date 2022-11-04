@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class AlreadyExistPeriodicAssignment extends Exception
+class AlreadyExistAssignment extends Exception
 {
     public function report()
     {

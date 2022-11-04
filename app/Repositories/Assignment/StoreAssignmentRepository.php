@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories\Assignment;
 
+use App\Exceptions\AlreadyExistAssignment;
 use App\Exceptions\AlreadyExistPeriodicAssignment;
 use App\Models\Assignment;
 use Illuminate\Support\Collection;
@@ -21,7 +22,7 @@ final class StoreAssignmentRepository
             $this->readRepository
             ->existPeriodicAssignment($input['client_id'], $input['companion_id'])
         ) {
-            throw new AlreadyExistPeriodicAssignment();
+            throw new AlreadyExistAssignment();
         }
 
         DB::beginTransaction();
