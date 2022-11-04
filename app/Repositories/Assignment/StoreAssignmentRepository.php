@@ -18,7 +18,7 @@ final class StoreAssignmentRepository
     public function storeWithDays(Collection $input, Assignment $assignment): Assignment
     {
         if (
-            $input['periodic'] && $this->readRepository
+            $this->readRepository
             ->existPeriodicAssignment($input['client_id'], $input['companion_id'])
         ) {
             throw new AlreadyExistPeriodicAssignment();

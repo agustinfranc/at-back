@@ -10,7 +10,7 @@ class AlreadyExistPeriodicAssignment extends Exception
     {
         abort(
             422,
-            'Ya existe una asignacion periodica para el cliente y acompañante seleccionados.'
+            'Ya existe una asignacion para el cliente y acompañante seleccionados.'
         );
     }
 }
