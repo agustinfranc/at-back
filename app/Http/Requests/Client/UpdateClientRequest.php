@@ -24,12 +24,12 @@ class UpdateClientRequest extends FormRequest
     public function rules()
     {
         $storeRules = (new StoreClientRequest())->rules();
-    
+
         $localRules = [
             'id' => 'required|integer',
             'name' => 'required|string|between:1,80',
         ];
-
+        
         return array_merge($storeRules, $localRules);
     }
 }
