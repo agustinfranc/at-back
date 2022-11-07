@@ -18,7 +18,7 @@ class CompanionFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'cuit' => fake()->words(1,true),
+            'cuit' => fake()->fake()->numberBetween('1', '99999999'),
             'nationality' => fake()->words(1, true),
             'birthday' => fake()->date(),
             'has_sign_contract' => fake()->boolean(),
