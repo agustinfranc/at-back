@@ -14,7 +14,7 @@ class Companion extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'cuit' => 'integer',
+        'cuit' => 'string',
         'monotax' => 'boolean',
         'monotax' => 'boolean',
         'criminal_record' => 'boolean',
