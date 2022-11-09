@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assignments_templates');
+        Schema::dropIfExists('assignment_templates');
     }
 };
