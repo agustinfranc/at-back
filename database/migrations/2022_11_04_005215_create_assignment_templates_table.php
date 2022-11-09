@@ -15,7 +15,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('assignments_templates', function (Blueprint $table) {
+        Schema::create('assignment_templates', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Client::class);
             $table->foreignIdFor(Companion::class);

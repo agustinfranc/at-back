@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAssignmentsTemplateRequest;
-use App\Http\Requests\UpdateAssignmentsTemplateRequest;
-use App\Models\AssignmentsTemplate;
+use App\Http\Requests\StoreAssignmentTemplateRequest;
+use App\Http\Requests\UpdateAssignmentTemplateRequest;
+use App\Models\AssignmentTemplate;
 
-class AssignmentsTemplateController extends Controller
+class AssignmentTemplateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AssignmentsTemplateController extends Controller
      * @param  \App\Http\Requests\StoreAssignmentsTemplateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAssignmentsTemplateRequest $request)
+    public function store(StoreAssignmentTemplateRequest $request)
     {
         //
     }
@@ -45,7 +45,7 @@ class AssignmentsTemplateController extends Controller
      * @param  \App\Models\AssignmentsTemplate  $assignmentsTemplate
      * @return \Illuminate\Http\Response
      */
-    public function show(AssignmentsTemplate $assignmentsTemplate)
+    public function show(AssignmentTemplate $assignmentTemplate)
     {
         //
     }
@@ -56,7 +56,7 @@ class AssignmentsTemplateController extends Controller
      * @param  \App\Models\AssignmentsTemplate  $assignmentsTemplate
      * @return \Illuminate\Http\Response
      */
-    public function edit(AssignmentsTemplate $assignmentsTemplate)
+    public function edit(AssignmentTemplate $assignmentTemplate)
     {
         //
     }
@@ -68,7 +68,7 @@ class AssignmentsTemplateController extends Controller
      * @param  \App\Models\AssignmentsTemplate  $assignmentsTemplate
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAssignmentsTemplateRequest $request, AssignmentsTemplate $assignmentsTemplate)
+    public function update(UpdateAssignmentTemplateRequest $request, AssignmentTemplate $assignmentTemplate)
     {
         //
     }
@@ -79,7 +79,7 @@ class AssignmentsTemplateController extends Controller
      * @param  \App\Models\AssignmentsTemplate  $assignmentsTemplate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AssignmentsTemplate $assignmentsTemplate)
+    public function destroy(AssignmentTemplate $assignmentTemplate)
     {
         //
     }
