@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('assignments', function (Blueprint $table) {
             $table->dropColumn('periodic');
+            $table->dropColumn('enabled');
         });
     }
 
@@ -27,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('assignments', function (Blueprint $table) {
             $table->boolean('periodic')->default(false);
+            $table->boolean('enabled')->default(true);
         });
     }
 };
