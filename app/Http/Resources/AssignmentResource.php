@@ -18,6 +18,7 @@ class AssignmentResource extends JsonResource
             'id' => $this->id,
             'client' => $this->client,
             'companion' => $this->companion,
+            'date' => $this->date,
             'hours' => $this->hours,
             'from' => $this->from,
             'to' => $this->to,

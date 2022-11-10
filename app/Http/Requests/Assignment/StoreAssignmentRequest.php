@@ -26,6 +26,7 @@ class StoreAssignmentRequest extends FormRequest
         return [
             'client_id' => 'required|integer',
             'companion_id' => 'required|integer',
+            'date' => 'required',
             'hours' => 'required|integer',
         ];
     }
