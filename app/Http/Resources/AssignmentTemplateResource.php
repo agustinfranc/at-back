@@ -18,9 +18,7 @@ class AssignmentResource extends JsonResource
             'id' => $this->id,
             'client' => $this->client,
             'companion' => $this->companion,
-            'hours' => $this->hours,
-            'from' => $this->from,
-            'to' => $this->to,
+            'days' => $this->days,
             'created_at' => $this->created_at,
         ];
     }
