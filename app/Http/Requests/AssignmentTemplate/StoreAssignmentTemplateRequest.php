@@ -24,7 +24,14 @@ class StoreAssignmentTemplateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'client_id' => 'required|integer',
+            'companion_id' => 'required|integer',
+            'days' => 'required|array',
+            'days.*.id' => 'required|integer|distinct',
+            'days.*.enabled' => 'required|boolean',
+            'days.*.from' => 'nullable|string',
+            'days.*.to' => 'nullable|string',
+            'days.*.hours' => 'required|integer',
         ];
     }
 }
