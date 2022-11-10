@@ -26,13 +26,7 @@ class StoreAssignmentRequest extends FormRequest
         return [
             'client_id' => 'required|integer',
             'companion_id' => 'required|integer',
-            'enabled' => 'required|boolean',
-            'days' => 'required|array',
-            'days.*.id' => 'required|integer|distinct',
-            'days.*.enabled' => 'required|boolean',
-            'days.*.from' => 'nullable|string',
-            'days.*.to' => 'nullable|string',
-            'days.*.hours' => 'required|integer',
+            'hours' => 'required|integer',
         ];
     }
 }
