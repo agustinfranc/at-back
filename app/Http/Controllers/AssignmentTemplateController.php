@@ -10,12 +10,13 @@ use App\Http\Resources\AssignmentTemplateResource;
 use App\Models\Assignment;
 use App\Models\AssignmentTemplate;
 use App\Repositories\AssignmentTemplate\GetAssignmentTemplateRepository;
+use App\Repositories\AssignmentTemplate\StoreAssignmentTemplateRepository;
 
 class AssignmentTemplateController extends Controller
 {
     public function __construct(
         private readonly GetAssignmentTemplateRepository $getRepository,
-        private readonly StoreAssignmentTemplateRequest $storeRepository
+        private readonly StoreAssignmentTemplateRepository $storeRepository
     ) {
     }
 

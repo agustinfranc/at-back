@@ -9,7 +9,7 @@ use App\Models\AssignmentTemplate;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-final class StoreAssignmentRepository
+final class StoreAssignmentTemplateRepository
 {
     public function __construct(private readonly GetAssignmentTemplateRepository $readRepository)
     {

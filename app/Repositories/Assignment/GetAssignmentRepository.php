@@ -10,12 +10,12 @@ class GetAssignmentRepository
 {
     public static function getAll()
     {
-        return Assignment::with(['client', 'companion', 'days'])->get();
+        return Assignment::with(['client', 'companion'])->get();
     }
 
     public static function getOne($id)
     {
-        return Assignment::with(['client', 'companion', 'days'])->find($id);
+        return Assignment::with(['client', 'companion'])->find($id);
     }
 
     public static function existPeriodicAssignment($clientId, $companionId)
