@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ClientSeeder::class);
         $this->call(CompanionSeeder::class);
         $this->call(DaySeeder::class);
-        $this->call(AssignmentDaySeeder::class);
+        $this->call(AssignmentTemplateDaySeeder::class);
+        $this->call(AssignmentSeeder::class);
         $this->call(UserRoleSeeder::class);
         $this->call(UserSeeder::class);
     }

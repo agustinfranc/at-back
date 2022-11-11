@@ -24,6 +24,7 @@ class AssignmentFactory extends Factory
             'hours' => fake()->numberBetween('1', '24'),
             'from' => fake()->time(),
             'to' => fake()->time(),
+            'date' => fake()->date(),
         ];
     }
 }
