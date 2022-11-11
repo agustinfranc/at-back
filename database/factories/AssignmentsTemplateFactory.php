@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
+use App\Models\Companion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,8 @@ class AssignmentsTemplateFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'client_id' => Client::factory(),
+            'companion_id' => Companion::factory(),
         ];
     }
 }

@@ -21,7 +21,9 @@ class AssignmentFactory extends Factory
         return [
             'client_id' => Client::factory(),
             'companion_id' => Companion::factory(),
-            'enabled' => fake()->boolean(),
+            'hours' => fake()->numberBetween('1', '24'),
+            'from' => fake()->time(),
+            'to' => fake()->time(),
         ];
     }
 }

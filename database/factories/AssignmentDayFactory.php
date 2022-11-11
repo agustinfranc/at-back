@@ -2,8 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Assignment;
-use App\Models\Day;
+use App\Models\AssignmentTemplate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +18,7 @@ class AssignmentDayFactory extends Factory
     public function definition()
     {
         return [
-            'assignment_id' => Assignment::factory(),
+            'assignment_id' => AssignmentTemplate::factory(),
             'day_id' => fake()->numberBetween('1', '7'),
             'hours' => fake()->numberBetween('1', '24'),
             'from' => fake()->time(),

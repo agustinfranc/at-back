@@ -10,7 +10,6 @@ use App\Http\Resources\AssignmentResource;
 use App\Models\Assignment;
 use App\Repositories\Assignment\GetAssignmentRepository;
 use App\Repositories\Assignment\StoreAssignmentRepository;
-use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
 {
@@ -39,7 +38,7 @@ class AssignmentController extends Controller
     public function store(StoreAssignmentRequest $request)
     {
         return new AssignmentResource(
-            $this->storeRepository->storeWithDays($request->collect(), new Assignment)
+            $this->storeRepository->store($request->collect())
         );
     }
 
@@ -64,7 +63,7 @@ class AssignmentController extends Controller
     public function update(UpdateAssignmentRequest $request, Assignment $assignment)
     {
         return new AssignmentResource(
-            $this->storeRepository->storeWithDays($request->collect(), $assignment)
+            $this->storeRepository->store($request->collect(), $assignment)
         );
     }
 
