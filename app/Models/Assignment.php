@@ -12,10 +12,6 @@ class Assignment extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
-        'enabled' => 'boolean',
-    ];
-
     public function client()
     {
         return $this->belongsTo(Client::class);
@@ -24,12 +20,5 @@ class Assignment extends Model
     public function companion()
     {
         return $this->belongsTo(Companion::class);
-    }
-
-    public function days()
-    {
-        return $this->belongsToMany(Day::class)
-            ->withPivot('hours', 'from', 'to')
-            ->withTimestamps();
     }
 }

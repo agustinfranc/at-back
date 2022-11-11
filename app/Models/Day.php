@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Day extends Model
 {
-    public function assignments()
+    public function assignmentTemplates()
     {
-        return $this->belongsToMany(Assignment::class)
+        return $this->belongsToMany(AssignmentTemplate::class)
             ->withPivot('hours', 'from', 'to')
             ->withTimestamps();
     }
