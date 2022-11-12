@@ -36,6 +36,7 @@ class ClientResource extends JsonResource
             'affiliate' => $this->affiliate,
             'budget_date' => $this->budget_date,
             'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
