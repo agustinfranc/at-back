@@ -9,11 +9,15 @@ use Illuminate\Support\Collection;
 
 class StoreUserRepository
 {
-    public static function store(Collection $input): User
+    public static function store(Collection $input, User $user): User
     {
         $input = self::_forgetPasswordWhenIsEmptytUpdate($input);
 
-        return User::updateOrCreate(['id' => $input->pull('id')], $input->all());
+        $user->fill($input->all());
+
+        $user->save();
+
+        return $user;
     }
 
     public static function softDelete(User $user): bool
