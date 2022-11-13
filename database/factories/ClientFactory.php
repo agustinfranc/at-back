@@ -18,12 +18,12 @@ class ClientFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'dni' => fake()->numberBetween('1','99999999'),
-            'phone' => fake()->numberBetween('1','99999999'),
-            'rate' => fake()->numberBetween('1','9999'),
-            'taxable' => fake()->numberBetween('1','100'),
+            'dni' => fake()->numberBetween('1', '99999999'),
+            'phone' => (string) fake()->numberBetween('1', '99999999'),
+            'rate' => fake()->numberBetween('1', '9999'),
+            'taxable' => fake()->numberBetween('1', '100'),
             'comments' => fake()->words(20, true),
-            'address' =>fake()->words(2, true),
+            'address' => fake()->words(2, true),
             'guardian_name' => fake()->name(),
             'extra_phone' => fake()->words(5, true),
             'birthday' => fake()->date(),

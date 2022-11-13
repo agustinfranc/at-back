@@ -30,6 +30,6 @@ class UpdateClientRequest extends FormRequest
             'name' => 'required|string|between:1,80',
         ];
 
-        return array_merge($localRules, $storeRules);
+        return array_merge($storeRules, $localRules);
     }
 }

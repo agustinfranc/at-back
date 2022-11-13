@@ -7,12 +7,16 @@ use Illuminate\Support\Collection;
 
 class StoreClientRepository
 {
-    public static function store(Collection $client)
+    public static function store(Collection $input, Client $client): Client
     {
-        return Client::updateOrCreate(['id' => $client->pull('id')], $client->all());
+        $client->fill($input->all());
+
+        $client->save();
+
+        return $client;
     }
 
-    public function softDelete(Client $client): bool
+    public static function softDelete(Client $client): bool
     {
         return $client->delete();
     }

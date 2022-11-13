@@ -9,12 +9,16 @@ use Illuminate\Support\Collection;
 
 class StoreCompanionRepository
 {
-    public static function store(Collection $companion)
+    public static function store(Collection $input, Companion $companion): Companion
     {
-        return Companion::updateOrCreate(['id' => $companion->pull('id')], $companion->all());
+        $companion->fill($input->all());
+
+        $companion->save();
+
+        return $companion;
     }
 
-    public function softDelete(Companion $companion): bool
+    public static function softDelete(Companion $companion): bool
     {
         return $companion->delete();
     }
