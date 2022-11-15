@@ -38,7 +38,7 @@ class AssignmentController extends Controller
     public function store(StoreAssignmentRequest $request)
     {
         return new AssignmentResource(
-            $this->storeRepository->store($request->collect())
+            $this->storeRepository->store($request->collect(), new Assignment())
         );
     }
 
