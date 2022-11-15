@@ -19,6 +19,7 @@ class AssignmentTemplateResource extends JsonResource
             'client' => $this->client,
             'companion' => $this->companion,
             'days' => $this->days,
+            'enabled' => $this->enabled,
             'created_at' => $this->created_at,
         ];
     }
