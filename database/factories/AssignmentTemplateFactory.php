@@ -21,6 +21,7 @@ class AssignmentTemplateFactory extends Factory
         return [
             'client_id' => Client::factory(),
             'companion_id' => Companion::factory(),
+            'enabled' => fake()->boolean(),
         ];
     }
 }
