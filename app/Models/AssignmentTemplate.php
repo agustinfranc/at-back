@@ -11,6 +11,10 @@ class AssignmentTemplate extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'enabled' => 'boolean',
+    ];
+
     public function client()
     {
         return $this->belongsTo(Client::class);
