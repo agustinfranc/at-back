@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('hours');
             $table->time('from')->nullable();
             $table->time('to')->nullable();
-            $table->date('date');
+            $table->date('date')->nullable();
         });
     }
 

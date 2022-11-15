@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAssignmentTemplateRequest;
-use App\Http\Requests\UpdateAssignmentTemplateRequest;
+use App\Http\Requests\AssignmentTemplate\StoreAssignmentTemplateRequest;
+use App\Http\Requests\AssignmentTemplate\UpdateAssignmentTemplateRequest;
 use App\Http\Resources\AssignmentTemplateResource;
-use App\Models\Assignment;
 use App\Models\AssignmentTemplate;
 use App\Repositories\AssignmentTemplate\GetAssignmentTemplateRepository;
 use App\Repositories\AssignmentTemplate\StoreAssignmentTemplateRepository;
@@ -39,7 +38,7 @@ class AssignmentTemplateController extends Controller
     public function store(StoreAssignmentTemplateRequest $request)
     {
         return new AssignmentTemplateResource(
-            $this->storeRepository->storeWithDays($request->collect(), new Assignment)
+            $this->storeRepository->storeWithDays($request->collect(), new AssignmentTemplate())
         );
     }
 

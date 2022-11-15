@@ -19,7 +19,8 @@ final class StoreAssignmentTemplateRepository
     {
         if (
             $this->readRepository
-            ->existPeriodicAssignment($input['client_id'], $input['companion_id'])
+            ->existAssignment($input['client_id'], $input['companion_id']) &&
+            ($input->get('id') == null)
         ) {
             throw new AlreadyExistAssignment();
         }

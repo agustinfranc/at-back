@@ -5,7 +5,6 @@ use App\Http\Controllers\AssignmentTemplateController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanionController;
 use App\Http\Controllers\UserController;
-use App\Models\AssignmentTemplate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

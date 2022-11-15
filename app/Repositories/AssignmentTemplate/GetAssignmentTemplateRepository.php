@@ -18,7 +18,7 @@ class GetAssignmentTemplateRepository
         return AssignmentTemplate::with(['client', 'companion', 'days'])->find($id);
     }
 
-    public static function existPeriodicAssignment($clientId, $companionId)
+    public static function existAssignment($clientId, $companionId)
     {
         return AssignmentTemplate::where('client_id', $clientId)
             ->where('companion_id', $companionId)
