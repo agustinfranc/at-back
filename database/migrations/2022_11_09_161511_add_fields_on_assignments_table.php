@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('assignments', function (Blueprint $table) {
-            $table->integer('hours');
+            $table->integer('hours')->nullable();
             $table->time('from')->nullable();
             $table->time('to')->nullable();
             $table->date('date')->nullable();
