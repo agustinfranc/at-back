@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Assignment;
+namespace App\Http\Requests\AssignmentTemplate;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAssignmentRequest extends FormRequest
+class UpdateAssignmentTemplateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,12 @@ class StoreAssignmentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'client_id' => 'required|integer',
-            'companion_id' => 'required|integer',
-            'date' => 'required',
-            'hours' => 'required|integer',
+        $storeRules = (new StoreAssignmentTemplateRequest())->rules();
+
+        $localRules = [
+            'id' => 'required|integer',
         ];
+
+        return array_merge($localRules, $storeRules);
     }
 }

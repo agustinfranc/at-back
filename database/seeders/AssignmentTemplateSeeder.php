@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AssignmentDaySeeder extends Seeder
+class AssignmentTemplateSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +13,6 @@ class AssignmentDaySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\AssignmentDay::factory(10)->create();
+        \App\Models\AssignmentTemplate::factory(10)->create();
     }
 }

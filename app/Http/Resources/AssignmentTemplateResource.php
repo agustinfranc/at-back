@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AssignmentResource extends JsonResource
+class AssignmentTemplateResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,10 +18,8 @@ class AssignmentResource extends JsonResource
             'id' => $this->id,
             'client' => $this->client,
             'companion' => $this->companion,
-            'date' => $this->date,
-            'hours' => $this->hours,
-            'from' => $this->from,
-            'to' => $this->to,
+            'days' => $this->days,
+            'enabled' => $this->enabled,
             'created_at' => $this->created_at,
         ];
     }

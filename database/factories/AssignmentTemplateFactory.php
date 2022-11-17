@@ -7,9 +7,9 @@ use App\Models\Companion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Assignment>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AssignmentsTemplate>
  */
-class AssignmentFactory extends Factory
+class AssignmentTemplateFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,10 +21,7 @@ class AssignmentFactory extends Factory
         return [
             'client_id' => Client::factory(),
             'companion_id' => Companion::factory(),
-            'hours' => fake()->numberBetween('1', '24'),
-            'from' => fake()->time(),
-            'to' => fake()->time(),
-            'date' => fake()->date(),
+            'enabled' => fake()->boolean(),
         ];
     }
 }
