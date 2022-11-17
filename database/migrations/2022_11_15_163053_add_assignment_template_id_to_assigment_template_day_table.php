@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('assignment_template_day', function (Blueprint $table) {
-            $table->foreignIdFor(AssignmentTemplate::class);
+            $table->foreignIdFor(AssignmentTemplate::class)->nullable();
         });
     }
 
