@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\AssignmentTemplateController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanionController;
 use App\Http\Controllers\UserController;
@@ -32,6 +33,10 @@ Route::apiResources([
 
 Route::apiResources([
     'assignments' => AssignmentController::class,
+]);
+
+Route::apiResources([
+    'assignment-templates' => AssignmentTemplateController::class,
 ]);
 
 Route::apiResources([
