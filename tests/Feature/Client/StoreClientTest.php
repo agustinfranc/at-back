@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\E2E\Client;
-
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;

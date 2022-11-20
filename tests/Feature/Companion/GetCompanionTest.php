@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\E2E;
-
 use App\Models\Companion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
