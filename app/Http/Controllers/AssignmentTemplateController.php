@@ -32,7 +32,7 @@ class AssignmentTemplateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAssignmentRequest  $request
+     * @param  \App\Http\Requests\StoreAssignmentRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreAssignmentTemplateRequest $request)
@@ -45,7 +45,7 @@ class AssignmentTemplateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Assignment  $assignment
+     * @param  \App\Models\Assignment $assignment
      * @return \Illuminate\Http\Response
      */
     public function show(AssignmentTemplate $assignmentTemplate)
@@ -56,8 +56,8 @@ class AssignmentTemplateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAssignmentRequest  $request
-     * @param  \App\Models\Assignment $assignment
+     * @param  \App\Http\Requests\UpdateAssignmentRequest $request
+     * @param  \App\Models\Assignment                     $assignment
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateAssignmentTemplateRequest $request, AssignmentTemplate $assignmentTemplate)

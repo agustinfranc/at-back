@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\E2E\Client;
-
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -37,7 +35,7 @@ class StoreClientTest extends TestCase
 
 
         $response->assertOk()
-            ->assertJson(['data' => $clientsArrayFromResource], false);
-        // testear que el name sea George
+            ->assertJson(['data' => $clientsArrayFromResource], false)
+            ->assertJsonPath('data.name', 'George');
     }
 }

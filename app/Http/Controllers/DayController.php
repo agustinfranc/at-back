@@ -31,7 +31,7 @@ class DayController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDayRequest  $request
+     * @param  \App\Http\Requests\StoreDayRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreDayRequest $request)
@@ -42,7 +42,7 @@ class DayController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Day  $day
+     * @param  \App\Models\Day $day
      * @return \Illuminate\Http\Response
      */
     public function show(Day $day)
@@ -53,7 +53,7 @@ class DayController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Day  $day
+     * @param  \App\Models\Day $day
      * @return \Illuminate\Http\Response
      */
     public function edit(Day $day)
@@ -64,8 +64,8 @@ class DayController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDayRequest  $request
-     * @param  \App\Models\Day  $day
+     * @param  \App\Http\Requests\UpdateDayRequest $request
+     * @param  \App\Models\Day                     $day
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateDayRequest $request, Day $day)
@@ -76,7 +76,7 @@ class DayController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Day  $day
+     * @param  \App\Models\Day $day
      * @return \Illuminate\Http\Response
      */
     public function destroy(Day $day)
