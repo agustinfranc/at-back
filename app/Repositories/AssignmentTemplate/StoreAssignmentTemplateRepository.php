@@ -30,7 +30,7 @@ final class StoreAssignmentTemplateRepository
 
             $assignmentTemplate->save();
 
-            $this->_storeDays($input, $assignmentTemplate);
+            $this->storeDays($input, $assignmentTemplate);
 
             DB::commit();
 
@@ -47,7 +47,7 @@ final class StoreAssignmentTemplateRepository
         return $assignmentTemplate->delete();
     }
 
-    private function _storeDays(Collection $input, AssignmentTemplate $assignmentTemplate): void
+    private function storeDays(Collection $input, AssignmentTemplate $assignmentTemplate): void
     {
         if (empty($input['days'])) {
             return $assignmentTemplate;
