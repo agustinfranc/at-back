@@ -9,7 +9,6 @@ use App\Models\Companion;
 use App\Repositories\Companion\GetCompanionRepository;
 use App\Repositories\Companion\StoreCompanionRepository;
 
-
 class CompanionController extends Controller
 {
     public function __construct(

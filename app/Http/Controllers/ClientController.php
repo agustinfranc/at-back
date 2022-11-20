@@ -11,7 +11,6 @@ use App\Models\Client;
 use App\Repositories\Client\GetClientRepository;
 use App\Repositories\Client\StoreClientRepository;
 
-
 class ClientController extends Controller
 {
     public function __construct(
