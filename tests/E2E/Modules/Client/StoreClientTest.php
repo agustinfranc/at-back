@@ -37,7 +37,7 @@ class StoreClientTest extends TestCase
 
 
         $response->assertOk()
-            ->assertJson(['data' => $clientsArrayFromResource], false);
-        // testear que el name sea George
+            ->assertJson(['data' => $clientsArrayFromResource], false)
+            ->assertJsonPath('data.name', 'George');
     }
 }
