@@ -21,3 +21,16 @@ test('can store user', function () {
         ->assertStatus(201)
         ->assertJson(['data' => $user], false);
 });
+
+test('can update user', function () {
+    $user = User::factory()->create()->toArray();
+    $user['name'] = 'George';
+
+
+    $response = $this->put('/api/users/' . $user['id'], $user);
+
+
+    $response
+        ->assertStatus(200)
+        ->assertJson(['data' => $user], false);
+});
