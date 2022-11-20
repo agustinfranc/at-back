@@ -83,6 +83,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -   Run migrations: ./vendor/bin/sail artisan migrate
 -   Fresh migrate and run seeders: ./vendor/bin/sail artisan migrate:fresh --seed
 -   Run tests: ./vendor/bin/sail test
+-   Verify files: ./vendor/bin/phpcs
+-   Fix files: ./vendor/bin/phpcbf
 
 ## Useful Links
 
