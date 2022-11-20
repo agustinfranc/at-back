@@ -17,10 +17,8 @@ final class StoreAssignmentTemplateRepository
 
     public function storeWithDays(Collection $input, AssignmentTemplate $assignmentTemplate): AssignmentTemplate
     {
-        if (
-            $this->readRepository
-            ->existAssignment($input['client_id'], $input['companion_id']) &&
-            ($input->get('id') == null)
+        if ($this->readRepository->existAssignment($input['client_id'], $input['companion_id']) 
+            && ($input->get('id') == null)
         ) {
             throw new AlreadyExistAssignment();
         }

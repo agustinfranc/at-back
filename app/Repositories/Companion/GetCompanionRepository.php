@@ -6,7 +6,7 @@ namespace App\Repositories\Companion;
 
 use App\Models\Companion;
 
-class GetCompanionRepository 
+class GetCompanionRepository
 {
     public static function getAll()
     {

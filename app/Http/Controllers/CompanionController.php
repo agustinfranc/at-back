@@ -31,7 +31,7 @@ class CompanionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCompanionRequest  $request
+     * @param  \App\Http\Requests\StoreCompanionRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCompanionRequest $request)
@@ -55,8 +55,8 @@ class CompanionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCompanionRequest  $request
-     * @param  \App\Models\Companion  $companion
+     * @param  \App\Http\Requests\UpdateCompanionRequest $request
+     * @param  \App\Models\Companion                     $companion
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCompanionRequest $request, Companion $companion)
@@ -69,7 +69,7 @@ class CompanionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Companion  $companion
+     * @param  \App\Models\Companion $companion
      * @return \Illuminate\Http\Response
      */
     public function destroy(Companion $companion)
