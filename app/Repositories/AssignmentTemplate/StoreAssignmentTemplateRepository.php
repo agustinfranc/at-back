@@ -49,7 +49,7 @@ final class StoreAssignmentTemplateRepository
         return $assignmentTemplate->delete();
     }
 
-    private function _storeDays(Collection $input, AssignmentTemplate $assignmentTemplate)
+    private function _storeDays(Collection $input, AssignmentTemplate $assignmentTemplate): void
     {
         if (empty($input['days'])) {
             return $assignmentTemplate;
