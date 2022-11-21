@@ -35,7 +35,6 @@ class ClientResource extends JsonResource
             'health_insurance' => $this->health_insurance,
             'affiliate' => $this->affiliate,
             'budget_date' => $this->budget_date,
-            'created_at' => $this->created_at,
         ];
     }
 }
