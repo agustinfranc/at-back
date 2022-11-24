@@ -37,13 +37,9 @@ class CreateAssignmentsFromTemplateController extends Controller
       $startDate = Carbon::parse($date);
       $i = $date->weekNumberInMonth;
       while ($i <= $endDate->weekNumberInMonth) {
-        logger("semana " . strval($i));
         if ($startDate->weekNumberInMonth != 4) {
           $startDate->next($day->value);
-          logger($startDate);
           $this->_makeAssignment($template, $day, $startDate);
-        } else {
-          logger("se termino el mes");
         }
         $i++;
       }
