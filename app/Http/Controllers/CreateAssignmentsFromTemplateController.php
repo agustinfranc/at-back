@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Assignment;
 use App\Models\AssignmentTemplate;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
-use PhpParser\Node\Expr\Cast\Object_;
 
 class CreateAssignmentsFromTemplateController extends Controller
 {
@@ -30,16 +30,35 @@ class CreateAssignmentsFromTemplateController extends Controller
 
   public function _generateAssignmentsFromTemplate($template, $days)
   {
-    foreach ($days as $day) {
-      $assignment = new Assignment();
-      $assignment->client_id =  $template->client_id;
-      $assignment->companion_id =  $template->companion_id;
-      //$assignment->date = como hacemos
-      $assignment->hours =  $day->pivot->hours;
-      $assignment->from =  $day->pivot->from;
-      $assignment->to =  $day->pivot->to;
+    $date = Carbon::parse($template->created_at);
+    $endDate = Carbon::parse($template->created_at)->endOfMonth();
 
-      $assignment->save();
+    foreach ($days as $day) {
+      $startDate = Carbon::parse($date);
+      $i = $date->weekNumberInMonth;
+      while ($i <= $endDate->weekNumberInMonth) {
+        logger("semana " . strval($i));
+        if ($startDate->weekNumberInMonth != 4) {
+          $startDate->next($day->value);
+          logger($startDate);
+          $this->_makeAssignment($template, $day, $startDate);
+        } else {
+          logger("se termino el mes");
+        }
+        $i++;
+      }
     }
+  }
+
+  public function _makeAssignment($template, $day, $date)
+  {
+    $assignment = new Assignment();
+    $assignment->client_id =  $template->client_id;
+    $assignment->companion_id =  $template->companion_id;
+    $assignment->date = $date;
+    $assignment->hours =  $day->pivot->hours;
+    $assignment->from =  $day->pivot->from;
+    $assignment->to =  $day->pivot->to;
+    $assignment->save();
   }
 }
