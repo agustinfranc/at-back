@@ -13,40 +13,38 @@ class CreateAssignmentsFromTemplateController extends Controller
   {
     $templates = AssignmentTemplate::with(['days'])->get()->where('enabled', '=', 1);
 
-    $this->_iterateTemplates($templates);
+    $this->iterateTemplates($templates);
 
     return $templates;
   }
 
-  public function _iterateTemplates(Collection $templates)
+  private function iterateTemplates(Collection $templates)
   {
     $days = new Collection();
 
     foreach ($templates as $template) {
       $days = $template->days;
-      $this->_generateAssignmentsFromTemplate($template, $days);
+      $this->generateAssignmentsFromTemplate($template, $days);
     }
   }
 
-  public function _generateAssignmentsFromTemplate($template, $days)
+  private function generateAssignmentsFromTemplate($template, $days)
   {
     $date = Carbon::parse($template->created_at);
     $endDate = Carbon::parse($template->created_at)->endOfMonth();
 
     foreach ($days as $day) {
       $startDate = Carbon::parse($date);
-      $i = $date->weekNumberInMonth;
-      while ($i <= $endDate->weekNumberInMonth) {
-        if ($startDate->weekNumberInMonth != 4) {
-          $startDate->next($day->value);
-          $this->_makeAssignment($template, $day, $startDate);
+      while ($startDate->lessThanOrEqualTo($endDate)) {
+        if ($startDate->dayOfWeek == $day->value) {
+          $this->makeAssignment($template, $day, $startDate);
         }
-        $i++;
+        $startDate->addDay();
       }
     }
   }
 
-  public function _makeAssignment($template, $day, $date)
+  private function makeAssignment($template, $day, $date)
   {
     $assignment = new Assignment();
     $assignment->client_id =  $template->client_id;
