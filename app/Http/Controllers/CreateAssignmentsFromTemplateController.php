@@ -13,12 +13,12 @@ class CreateAssignmentsFromTemplateController extends Controller
   {
     $templates = AssignmentTemplate::with(['days'])->get()->where('enabled', '=', 1);
 
-    $this->iterateTemplates($templates);
+    $this->generateAssignmentsFromTemplates($templates);
 
     return $templates;
   }
 
-  private function iterateTemplates(Collection $templates)
+  private function generateAssignmentsFromTemplates(Collection $templates)
   {
     $days = new Collection();
 
@@ -44,7 +44,7 @@ class CreateAssignmentsFromTemplateController extends Controller
     }
   }
 
-  private function makeAssignment($template, $day, $date)
+  private function makeAssignment($template, $day, $date): void
   {
     $assignment = new Assignment();
     $assignment->client_id =  $template->client_id;
