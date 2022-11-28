@@ -34,8 +34,8 @@ class CreateAssignmentsFromTemplateController extends Controller
     foreach ($days as $day) {
       $startDate = Carbon::parse($date);
       while ($startDate->lessThanOrEqualTo($endDate)) {
-        if ($startDate->dayOfWeek == $day->value) {
-          $this->makeAssignment($template, $day, $startDate);
+        if ($startDate->dayOfWeek === $day->value) {
+          $this->createAssignment($template, $day, $startDate);
         }
         $startDate->addDay();
       }
