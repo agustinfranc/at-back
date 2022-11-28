@@ -20,10 +20,8 @@ class CreateAssignmentsFromTemplateController extends Controller
 
   private function generateAssignmentsFromTemplates(Collection $templates)
   {
-    $days = new Collection();
-
     foreach ($templates as $template) {
-      $days = $template->days;
+      $days = new Collection($template->days);
       $this->generateAssignmentsFromTemplate($template, $days);
     }
   }
