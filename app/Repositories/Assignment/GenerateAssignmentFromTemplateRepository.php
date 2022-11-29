@@ -11,7 +11,7 @@ class GenerateAssignmentFromTemplateRepository
 {
   public function generate()
   {
-    $templates = AssignmentTemplate::with(['days'])->get()->where('enabled', '=', 1);
+    $templates = AssignmentTemplate::with(['days'])->where('enabled', '=', 1)->get();
 
     $this->generateAssignmentsFromTemplates($templates);
 
@@ -46,16 +46,14 @@ class GenerateAssignmentFromTemplateRepository
 
   private function createAssignment($template, $day, $date): void
   {
-    $assignment = new Assignment();
-    $input = new Collection();
-    $input->put('client_id', $template->client_id);
-    $input->put('companion_id', $template->companion_id);
-    $input->put('date', $date);
-    $input->put('hours', $day->pivot->hours);
-    $input->put('from', $day->pivot->from);
-    $input->put('to', $day->pivot->to);
-
-    $assignment->fill($input->all());
+    $assignment = new Assignment([
+      'client_id' => $template->client_id,
+      'companion_id' => $template->companion_id,
+      'date' => $date,
+      'hours' => $day->pivot->hours,
+      'from' => $day->pivot->from,
+      'to' => $day->pivot->to
+    ]);
     $assignment->save();
   }
 }
