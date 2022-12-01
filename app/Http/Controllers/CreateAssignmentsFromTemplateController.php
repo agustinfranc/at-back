@@ -11,7 +11,7 @@ class CreateAssignmentsFromTemplateController extends Controller
   ) {
   }
 
-  public function generate()
+  public function __invoke()
   {
     return $this->generateRepository->generate();
   }

@@ -40,7 +40,7 @@ Route::apiResources([
     'assignment-templates' => AssignmentTemplateController::class,
 ]);
 
-Route::post('/create-assignments-from-template', [CreateAssignmentsFromTemplateController::class, 'generate']);
+Route::post('/create-assignments-from-template', CreateAssignmentsFromTemplateController::class);
 
 Route::apiResources([
     'users' => UserController::class,
