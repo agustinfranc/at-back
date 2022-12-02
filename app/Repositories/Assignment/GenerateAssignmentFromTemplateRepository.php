@@ -20,9 +20,10 @@ final class GenerateAssignmentFromTemplateRepository
 
   private function generateAssignmentsFromTemplates(Collection $templates): void
   {
-    foreach ($templates as $template) {
-      $this->generateAssignmentsFromTemplate($template);
-    }
+    $templates->each(
+      fn ($template) =>
+      $this->generateAssignmentsFromTemplate($template)
+    );
   }
 
   private function generateAssignmentsFromTemplate($template): void
