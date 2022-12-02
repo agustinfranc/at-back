@@ -30,8 +30,8 @@ final class GenerateAssignmentFromTemplateRepository
   {
     $startDate = Carbon::parse($template->created_at);
     $endDate = Carbon::parse($template->created_at)->endOfMonth();
-    $days = collect($template->days);
-    
+    $days = $template->days;
+
     foreach ($days as $day) {
       $date = Carbon::parse($startDate);
 
