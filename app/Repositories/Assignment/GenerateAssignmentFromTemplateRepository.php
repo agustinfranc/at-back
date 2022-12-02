@@ -7,9 +7,9 @@ use App\Models\AssignmentTemplate;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
-class GenerateAssignmentFromTemplateRepository
+final class GenerateAssignmentFromTemplateRepository
 {
-  public function generate()
+  public function generate(): Collection
   {
     $templates = AssignmentTemplate::with(['days'])->where('enabled', '=', true)->get();
 
@@ -18,22 +18,20 @@ class GenerateAssignmentFromTemplateRepository
     return $templates;
   }
 
-  private function generateAssignmentsFromTemplates(Collection $templates)
+  private function generateAssignmentsFromTemplates(Collection $templates): void
   {
     foreach ($templates as $template) {
-      $days = new Collection($template->days);
-      $this->generateAssignmentsFromTemplate($template, $days);
+      $this->generateAssignmentsFromTemplate($template);
     }
   }
 
-  private function generateAssignmentsFromTemplate($template, $days)
+  private function generateAssignmentsFromTemplate($template): void
   {
     $startDate = Carbon::parse($template->created_at);
     $endDate = Carbon::parse($template->created_at)->endOfMonth();
-
+    $days = collect($template->days);
     foreach ($days as $day) {
       $date = Carbon::parse($startDate);
-      logger("asignacion");
 
       while ($date->lessThanOrEqualTo($endDate)) {
         if ($date->dayOfWeek === $day->value) {
@@ -46,7 +44,7 @@ class GenerateAssignmentFromTemplateRepository
 
   private function createAssignment($template, $day, $date): void
   {
-    $assignment = Assignment::create([
+    Assignment::create([
       'client_id' => $template->client_id,
       'companion_id' => $template->companion_id,
       'date' => $date,
@@ -54,6 +52,5 @@ class GenerateAssignmentFromTemplateRepository
       'from' => $day->pivot->from,
       'to' => $day->pivot->to
     ]);
-    $assignment->save();
   }
 }
