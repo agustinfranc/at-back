@@ -11,7 +11,7 @@ class StoreUserRepository
 {
     public static function store(Collection $input, User $user): User
     {
-        $input = self::_forgetPasswordWhenIsEmptytUpdate($input);
+        $input = self::forgetPasswordWhenIsEmptytUpdate($input);
 
         $user->fill($input->all());
 
@@ -25,7 +25,7 @@ class StoreUserRepository
         return $user->delete();
     }
 
-    private static function _forgetPasswordWhenIsEmptytUpdate($input): Collection
+    private static function forgetPasswordWhenIsEmptytUpdate($input): Collection
     {
         if (!$input->get('password')) {
             $input->forget('password');

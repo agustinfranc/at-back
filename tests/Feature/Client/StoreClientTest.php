@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\E2E\Client;
-
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,15 +27,15 @@ class StoreClientTest extends TestCase
     {
         $client = Client::factory()->create();
         $client->name = 'George';
-        $client->save();
         $clientsArrayFromResource = json_decode((new ClientResource($client))->toJson(), true);
 
 
         $response = $this->putJson('/api/clients/' . $client->id, $client->toArray());
 
 
-        $response->assertOk()
-            ->assertJson(['data' => $clientsArrayFromResource], false);
-        // testear que el name sea George
+        $response
+            ->assertOk()
+            ->assertJson(['data' => $clientsArrayFromResource], false)
+            ->assertJsonPath('data.name', 'George');
     }
 }

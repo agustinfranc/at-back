@@ -31,7 +31,7 @@ class UserRoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUserRoleRequest  $request
+     * @param  \App\Http\Requests\StoreUserRoleRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUserRoleRequest $request)
@@ -42,7 +42,7 @@ class UserRoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UserRole  $userRole
+     * @param  \App\Models\UserRole $userRole
      * @return \Illuminate\Http\Response
      */
     public function show(UserRole $userRole)
@@ -53,7 +53,7 @@ class UserRoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UserRole  $userRole
+     * @param  \App\Models\UserRole $userRole
      * @return \Illuminate\Http\Response
      */
     public function edit(UserRole $userRole)
@@ -64,8 +64,8 @@ class UserRoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUserRoleRequest  $request
-     * @param  \App\Models\UserRole  $userRole
+     * @param  \App\Http\Requests\UpdateUserRoleRequest $request
+     * @param  \App\Models\UserRole                     $userRole
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateUserRoleRequest $request, UserRole $userRole)
@@ -76,7 +76,7 @@ class UserRoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UserRole  $userRole
+     * @param  \App\Models\UserRole $userRole
      * @return \Illuminate\Http\Response
      */
     public function destroy(UserRole $userRole)
