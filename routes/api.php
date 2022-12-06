@@ -4,6 +4,7 @@ use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AssignmentTemplateController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanionController;
+use App\Http\Controllers\CreateAssignmentsFromTemplateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::apiResources([
 Route::apiResources([
     'assignment-templates' => AssignmentTemplateController::class,
 ]);
+
+Route::post('/create-assignments-from-template', CreateAssignmentsFromTemplateController::class);
 
 Route::apiResources([
     'users' => UserController::class,
