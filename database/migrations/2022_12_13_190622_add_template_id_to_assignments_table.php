@@ -14,11 +14,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('template_migrations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(AssignmentTemplate::class);
-            $table->date('migration_date');
-            $table->timestamps();
+        Schema::table('assignments', function (Blueprint $table) {
+            $table->foreignIdFor(AssignmentTemplate::class)->nullable();
         });
     }
 
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('template_migrations');
+        Schema::table('assignments', function (Blueprint $table) {
+            $table->dropColumn('assignment_template_id');
+        });
     }
 };
