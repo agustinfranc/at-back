@@ -47,12 +47,13 @@ final class GenerateAssignmentFromTemplateRepository
     private function createAssignment($template, $day, $date): void
     {
         Assignment::create([
-        'client_id' => $template->client_id,
-        'companion_id' => $template->companion_id,
-        'date' => $date,
-        'hours' => $day->pivot->hours,
-        'from' => $day->pivot->from,
-        'to' => $day->pivot->to
+            'assignment_template_id' => $template->id,
+            'client_id' => $template->client_id,
+            'companion_id' => $template->companion_id,
+            'date' => $date,
+            'hours' => $day->pivot->hours,
+            'from' => $day->pivot->from,
+            'to' => $day->pivot->to
         ]);
     }
 }

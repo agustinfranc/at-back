@@ -17,7 +17,8 @@ final class StoreAssignmentTemplateRepository
 
     public function storeWithDays(Collection $input, AssignmentTemplate $assignmentTemplate): AssignmentTemplate
     {
-        if ($this->readRepository->existAssignment($input['client_id'], $input['companion_id'])
+        if (
+            $this->readRepository->existAssignment($input['client_id'], $input['companion_id'])
             && ($input->get('id') == null)
         ) {
             throw new AlreadyExistAssignment();
@@ -47,7 +48,7 @@ final class StoreAssignmentTemplateRepository
         return $assignmentTemplate->delete();
     }
 
-    private function storeDays(Collection $input, AssignmentTemplate $assignmentTemplate): void
+    private function storeDays(Collection $input, AssignmentTemplate $assignmentTemplate)
     {
         if (empty($input['days'])) {
             return $assignmentTemplate;
