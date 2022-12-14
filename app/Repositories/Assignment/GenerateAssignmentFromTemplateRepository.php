@@ -2,13 +2,20 @@
 
 namespace App\Repositories\Assignment;
 
+use App\Http\Requests\StoreTemplateMigrationRequest;
 use App\Models\Assignment;
 use App\Models\AssignmentTemplate;
+use App\Repositories\TemplateMigration\StoreTemplateMigrationRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 final class GenerateAssignmentFromTemplateRepository
 {
+    public function __construct(
+        private readonly StoreTemplateMigrationRepository $storeRepository,
+    ) {
+    }
+
     public function generate(): Collection
     {
         $templates = AssignmentTemplate::with(['days'])->where('enabled', '=', true)->get();
@@ -31,6 +38,8 @@ final class GenerateAssignmentFromTemplateRepository
         $startDate = Carbon::parse($template->created_at);
         $endDate = Carbon::parse($template->created_at)->endOfMonth();
         $days = $template->days;
+
+        $this->storeRepository->store($template);
 
         foreach ($days as $day) {
             $date = Carbon::parse($startDate);
