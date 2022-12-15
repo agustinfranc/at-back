@@ -13,7 +13,7 @@ class StoreTemplateMigrationRepository
   {
     TemplateMigration::create([
       'assignment_template_id' => $template->id,
-      'migration_date' => $template->created_at,
+      'migration_date' => date("Y-m-d"),
     ]);
   }
 }
