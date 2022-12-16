@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Assignment;
 
-use App\Http\Requests\StoreTemplateMigrationRequest;
 use App\Models\Assignment;
 use App\Models\AssignmentTemplate;
 use App\Repositories\TemplateMigration\StoreTemplateMigrationRepository;
@@ -28,8 +27,11 @@ final class GenerateAssignmentFromTemplateRepository
     private function generateAssignmentsFromTemplates(Collection $templates): void
     {
         $templates->each(
-            fn ($template) =>
-            $this->generateAssignmentsFromTemplate($template)
+            function ($template) {
+                if ($this->storeRepository->store($template)) {
+                    $this->generateAssignmentsFromTemplate($template);
+                }
+            }
         );
     }
 
@@ -38,8 +40,6 @@ final class GenerateAssignmentFromTemplateRepository
         $startDate = Carbon::parse($template->created_at);
         $endDate = Carbon::parse($template->created_at)->endOfMonth();
         $days = $template->days;
-
-        $this->storeRepository->store($template);
 
         foreach ($days as $day) {
             $date = Carbon::parse($startDate);
