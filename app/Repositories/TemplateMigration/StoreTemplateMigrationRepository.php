@@ -22,10 +22,12 @@ class StoreTemplateMigrationRepository
     //* no te importa si el mes anterior se creo o no, la vas a crear de todas maneras
     private function makeMigrations(AssignmentTemplate $template): bool
     {
+        // TODO: obtener de un repositorio de tipo get
         $migrations = TemplateMigration::where('assignment_template_id', $template->id)->get();
 
         // Si el template no tiene migraciones creo una y retorno
         if ($migrations->isEmpty()) {
+            // TODO: llevar el create a un metodo privado
             TemplateMigration::create([
                 'assignment_template_id' => $template->id,
                 'migration_date' => date("Y-m-d"),
@@ -42,6 +44,7 @@ class StoreTemplateMigrationRepository
 
             if ($migrationMonth === $currentMonth) return false;
 
+            // TODO: llevar el create a un metodo privado
             TemplateMigration::create([
                 'assignment_template_id' => $template->id,
                 'migration_date' => date("Y-m-d"),
