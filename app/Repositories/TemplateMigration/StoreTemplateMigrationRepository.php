@@ -7,6 +7,7 @@ namespace App\Repositories\TemplateMigration;
 use App\Models\AssignmentTemplate;
 use App\Models\TemplateMigration;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
 class StoreTemplateMigrationRepository
 {
@@ -14,33 +15,19 @@ class StoreTemplateMigrationRepository
         private readonly GetTemplateMigrationRepository $getRepository,
     ) {
     }
-    public function store(AssignmentTemplate $template): bool
+    public function store(AssignmentTemplate $template): TemplateMigration
     {
-        // TODO: retornar no un booleano sino las migraciones que se crearon
-        return $this->makeMigrations($template);
+        return $this->makeMigration($template);
     }
 
-    private function makeMigrations(AssignmentTemplate $template): bool
+    private function makeMigration(AssignmentTemplate $template): TemplateMigration
     {
-        $migrations = $this->getRepository::getByMonth($template->id);
-        if ($migrations->isEmpty()) {
+        $migration = $this->getRepository::getByMonth($template->id);
+        if ($migration->isEmpty()) {
             return $this->createMigration($template);
         }
 
-        // Si tiene las recorro, y si es la migracion del mes corriente entonces no creo una migracion
-        // de lo contrario creo una migracion con fecha del dia actual
-        foreach ($migrations as $migration) {
-            $migrationMonth = Carbon::parse($migration->migrationDate)->month;
-            $currentMonth = Carbon::parse(date("Y-m-d"))->month;
-
-            if ($migrationMonth === $currentMonth) return false;
-
-            $this->createMigration($template);
-
-            return true;
-        }
-
-        return true;
+        return $migration->first();
     }
 
     private function createMigration($template): TemplateMigration

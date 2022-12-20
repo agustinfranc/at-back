@@ -28,7 +28,9 @@ final class GenerateAssignmentFromTemplateRepository
     {
         $templates->each(
             function ($template) {
-                if ($this->storeRepository->store($template)) {
+                $migration = $this->storeRepository->store($template);
+                $migrationDate = Carbon::parse($migration->created_at);
+                if ($migrationDate->isToday()) {
                     $this->generateAssignmentsFromTemplate($template);
                 }
             }
