@@ -23,6 +23,7 @@ class StoreTemplateMigrationRepository
     private function makeMigration(AssignmentTemplate $template): TemplateMigration
     {
         $migration = $this->getRepository::getByMonth($template->id);
+
         if ($migration->isEmpty()) {
             return $this->createMigration($template);
         }
