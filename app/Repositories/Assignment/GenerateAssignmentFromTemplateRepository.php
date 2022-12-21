@@ -14,6 +14,7 @@ final class GenerateAssignmentFromTemplateRepository
     public function __construct(
         private readonly StoreTemplateMigrationRepository $storeRepository,
         private readonly GetTemplateMigrationRepository $getRepository,
+        private readonly StoreAssignmentRepository $storeAssignmentRepository
     ) {
     }
 
@@ -65,8 +66,7 @@ final class GenerateAssignmentFromTemplateRepository
 
     private function createAssignment($template, $day, $date): void
     {
-        // TODO: para crear usa el repositorio store correspondiente
-        Assignment::create([
+        $assignment = collect([
             'assignment_template_id' => $template->id,
             'client_id' => $template->client_id,
             'companion_id' => $template->companion_id,
@@ -75,5 +75,7 @@ final class GenerateAssignmentFromTemplateRepository
             'from' => $day->pivot->from,
             'to' => $day->pivot->to
         ]);
+
+        $this->storeAssignmentRepository->store($assignment);
     }
 }
