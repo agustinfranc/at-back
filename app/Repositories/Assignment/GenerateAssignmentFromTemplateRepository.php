@@ -4,6 +4,7 @@ namespace App\Repositories\Assignment;
 
 use App\Models\Assignment;
 use App\Models\AssignmentTemplate;
+use App\Repositories\TemplateMigration\GetTemplateMigrationRepository;
 use App\Repositories\TemplateMigration\StoreTemplateMigrationRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,6 +13,7 @@ final class GenerateAssignmentFromTemplateRepository
 {
     public function __construct(
         private readonly StoreTemplateMigrationRepository $storeRepository,
+        private readonly GetTemplateMigrationRepository $getRepository,
     ) {
     }
 
@@ -27,8 +29,18 @@ final class GenerateAssignmentFromTemplateRepository
     private function generateAssignmentsFromTemplates(Collection $templates): void
     {
         $templates->each(
+            // TODO: refactorizar esta funcion
             function ($template) {
-                $migration = $this->storeRepository->store($template);
+                // $migration = $this->storeRepository->store($template);
+
+                $migration = $this->getRepository::getByMonth($template->id);
+
+                if ($migration->isEmpty()) {
+                    $migration = $this->storeRepository->store($template);
+                }
+
+                $migration = $migration->first();
+
                 $migrationDate = Carbon::parse($migration->created_at);
 
                 if ($migrationDate->isToday()) {
@@ -58,6 +70,7 @@ final class GenerateAssignmentFromTemplateRepository
 
     private function createAssignment($template, $day, $date): void
     {
+        // TODO: para crear usa el repositorio store correspondiente
         Assignment::create([
             'assignment_template_id' => $template->id,
             'client_id' => $template->client_id,
