@@ -6,16 +6,9 @@ namespace App\Repositories\TemplateMigration;
 
 use App\Models\AssignmentTemplate;
 use App\Models\TemplateMigration;
-// use Carbon\Carbon;
-// use Illuminate\Database\Eloquent\Collection;
 
 class StoreTemplateMigrationRepository
 {
-    // public function __construct(
-    //     private readonly GetTemplateMigrationRepository $getRepository,
-    // ) {
-    // }
-
     public function store(AssignmentTemplate $template): TemplateMigration
     {
         return TemplateMigration::create([
