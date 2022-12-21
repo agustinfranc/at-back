@@ -28,7 +28,7 @@ final class GenerateAssignmentFromTemplateRepository
 
     private function generateAssignmentsFromTemplates(Collection $templates): void
     {
-        $templates->each(
+        $templates->each(static fn ($template) => $this->checkAndCreateMigrations($template));
             function ($template) {
                 $this->checkAndCreateMigrations($template);
             }
