@@ -6,15 +6,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Client\StoreClientRequest;
 use App\Http\Requests\Client\UpdateClientRequest;
+use App\Http\Resources\ClientCollectionResource;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
-use App\Repositories\Client\GetClientRepository;
+use App\Modules\Client\Interfaces\IGetClientRepository;
 use App\Repositories\Client\StoreClientRepository;
 
 class ClientController extends Controller
 {
     public function __construct(
-        private readonly GetClientRepository $getRepository,
+        private readonly IGetClientRepository $getRepository,
         private readonly StoreClientRepository $storeRepository
     ) {
     }
@@ -26,8 +27,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        // TODO: crear nuevo resource para no enviar toda la data
-        return ClientResource::collection($this->getRepository::getAll());
+        return ClientCollectionResource::collection($this->getRepository::getAll());
     }
 
     /**

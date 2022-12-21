@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\ClientCollectionResource;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,7 +15,7 @@ class GetClientTest extends TestCase
     public function test_show_clients()
     {
         $clients = Client::factory()->count(10)->create();
-        $clientsArrayFromResource = json_decode(ClientResource::collection($clients)->toJson(), true);
+        $clientsArrayFromResource = json_decode(ClientCollectionResource::collection($clients)->toJson(), true);
 
 
         $response = $this->get('/api/clients');
