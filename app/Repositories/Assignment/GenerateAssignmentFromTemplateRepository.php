@@ -29,21 +29,12 @@ final class GenerateAssignmentFromTemplateRepository
     private function generateAssignmentsFromTemplates(Collection $templates): void
     {
         $templates->each(
-            // TODO: refactorizar esta funcion
             function ($template) {
-                // $migration = $this->storeRepository->store($template);
 
                 $migration = $this->getRepository::getByMonth($template->id);
 
                 if ($migration->isEmpty()) {
                     $migration = $this->storeRepository->store($template);
-                }
-
-                $migration = $migration->first();
-
-                $migrationDate = Carbon::parse($migration->created_at);
-
-                if ($migrationDate->isToday()) {
                     $this->generateAssignmentsFromTemplate($template);
                 }
             }
