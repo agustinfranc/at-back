@@ -30,15 +30,19 @@ final class GenerateAssignmentFromTemplateRepository
     {
         $templates->each(
             function ($template) {
-
-                $migration = $this->getRepository::getByMonth($template->id);
-
-                if ($migration->isEmpty()) {
-                    $migration = $this->storeRepository->store($template);
-                    $this->generateAssignmentsFromTemplate($template);
-                }
+                $this->checkAndCreateMigrations($template);
             }
         );
+    }
+
+    private function checkAndCreateMigrations($template): void
+    {
+        $migration = $this->getRepository::getByMonth($template->id);
+
+        if ($migration->isEmpty()) {
+            $this->storeRepository->store($template);
+            $this->generateAssignmentsFromTemplate($template);
+        }
     }
 
     private function generateAssignmentsFromTemplate($template): void
