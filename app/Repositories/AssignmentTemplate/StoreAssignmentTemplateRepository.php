@@ -48,7 +48,7 @@ final class StoreAssignmentTemplateRepository
         return $assignmentTemplate->delete();
     }
 
-    private function storeDays(Collection $input, AssignmentTemplate $assignmentTemplate)
+    private function storeDays(Collection $input, AssignmentTemplate $assignmentTemplate): AssignmentTemplate
     {
         if (empty($input['days'])) {
             return $assignmentTemplate;
@@ -63,5 +63,7 @@ final class StoreAssignmentTemplateRepository
         }
 
         $assignmentTemplate->days()->sync($assignmentTemplateDays);
+
+        return $assignmentTemplate;
     }
 }
