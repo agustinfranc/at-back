@@ -12,13 +12,13 @@ test('find a client', function () {
     $this->setUp();
 
     $fakeClient = Client::factory()->make();
-    $controller = new ClientController(
-        // new HardcodedInMemoryGetClientRepository($fakeClient),
-        // app()->make(HardcodedInMemoryGetClientRepository::class),
-        new GetClientRepository(),
-        // app()->make(StoreClientRepository::class),
-        new StoreClientRepository()
-    );
+    // $controller = new ClientController(
+    // new HardcodedInMemoryGetClientRepository($fakeClient),
+    // app()->make(HardcodedInMemoryGetClientRepository::class),
+    // new GetClientRepository(),
+    // app()->make(StoreClientRepository::class),
+    // new StoreClientRepository()
+    // );
     // $controller = app()->make(ClientController::class);
     // $expectedClient = $controller->show($fakeClient);
 
