@@ -8,10 +8,10 @@ use App\Modules\Client\Interfaces\IGetClientRepository;
 use App\Repositories\Client\GetClientRepository;
 use App\Repositories\Client\StoreClientRepository;
 
-test('find a client', function () {
-    $this->setUp();
+// test('find a client', function () {
+    // $this->setUp();
 
-    $fakeClient = Client::factory()->make();
+    // $fakeClient = Client::factory()->make();
     // $controller = new ClientController(
     // new HardcodedInMemoryGetClientRepository($fakeClient),
     // app()->make(HardcodedInMemoryGetClientRepository::class),
@@ -36,4 +36,4 @@ test('find a client', function () {
     // $response
     //     ->assertStatus(201)
     //     ->assertJson(['data' => $user], false);
-});
+// });
