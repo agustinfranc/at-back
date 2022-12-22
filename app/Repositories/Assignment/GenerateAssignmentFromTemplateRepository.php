@@ -4,11 +4,20 @@ namespace App\Repositories\Assignment;
 
 use App\Models\Assignment;
 use App\Models\AssignmentTemplate;
+use App\Repositories\TemplateMigration\GetTemplateMigrationRepository;
+use App\Repositories\TemplateMigration\StoreTemplateMigrationRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 final class GenerateAssignmentFromTemplateRepository
 {
+    public function __construct(
+        private readonly StoreTemplateMigrationRepository $storeRepository,
+        private readonly GetTemplateMigrationRepository $getRepository,
+        private readonly StoreAssignmentRepository $storeAssignmentRepository
+    ) {
+    }
+
     public function generate(): Collection
     {
         $templates = AssignmentTemplate::with(['days'])->where('enabled', '=', true)->get();
@@ -21,9 +30,20 @@ final class GenerateAssignmentFromTemplateRepository
     private function generateAssignmentsFromTemplates(Collection $templates): void
     {
         $templates->each(
-            fn ($template) =>
-            $this->generateAssignmentsFromTemplate($template)
+            function ($template) {
+                $this->checkAndCreateMigrations($template);
+            }
         );
+    }
+
+    private function checkAndCreateMigrations($template): void
+    {
+        $migration = $this->getRepository::getByMonth($template->id);
+
+        if ($migration->isEmpty()) {
+            $this->storeRepository->store($template);
+            $this->generateAssignmentsFromTemplate($template);
+        }
     }
 
     private function generateAssignmentsFromTemplate($template): void
@@ -46,13 +66,16 @@ final class GenerateAssignmentFromTemplateRepository
 
     private function createAssignment($template, $day, $date): void
     {
-        Assignment::create([
-        'client_id' => $template->client_id,
-        'companion_id' => $template->companion_id,
-        'date' => $date,
-        'hours' => $day->pivot->hours,
-        'from' => $day->pivot->from,
-        'to' => $day->pivot->to
+        $assignment = collect([
+            'assignment_template_id' => $template->id,
+            'client_id' => $template->client_id,
+            'companion_id' => $template->companion_id,
+            'date' => $date,
+            'hours' => $day->pivot->hours,
+            'from' => $day->pivot->from,
+            'to' => $day->pivot->to
         ]);
+
+        $this->storeAssignmentRepository->store($assignment);
     }
 }
