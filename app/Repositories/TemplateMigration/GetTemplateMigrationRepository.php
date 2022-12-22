@@ -12,7 +12,7 @@ class GetTemplateMigrationRepository
 {
     public static function getByMonth($id): Collection
     {
-        $currentMonth = Carbon::parse(date("Y-m-d"))->month;
-        return TemplateMigration::where('assignment_template_id', $id)->whereMonth('migration_date', $currentMonth)->get();
+        $current = Carbon::parse(date("Y-m-d"))->month;
+        return TemplateMigration::where('assignment_template_id', $id)->whereMonth('migration_date', $current)->get();
     }
 }
