@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Feature\Client;
+
 use App\Http\Resources\ClientCollectionResource;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;

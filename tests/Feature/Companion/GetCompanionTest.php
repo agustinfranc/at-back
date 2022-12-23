@@ -1,10 +1,10 @@
 <?php
 
+namespace Tests\Feature\Companion;
+
 use App\Models\Companion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Testing\Fluent\AssertableJson;
 
 class GetCompanionTest extends TestCase
 {
@@ -17,10 +17,6 @@ class GetCompanionTest extends TestCase
 
         $response = $this->get('/api/companions');
 
-
-        // $response->assertOk()->assertJson(fn (AssertableJson $json) =>
-        // $json->has('data')
-        //     ->missing('message'));
 
         $response->assertOk()
             ->assertJson(['data' => $companions->toArray()], false);
