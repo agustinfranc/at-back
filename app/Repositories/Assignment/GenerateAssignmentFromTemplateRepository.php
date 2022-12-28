@@ -48,7 +48,7 @@ final class GenerateAssignmentFromTemplateRepository
 
     private function generateAssignmentsFromTemplate($template): void
     {
-        $startDate = Carbon::parse($template->created_at);
+        $startDate = Carbon::parse(date("Y-m-d"));
         $endDate = Carbon::parse($template->created_at)->endOfMonth();
         $days = $template->days;
 
