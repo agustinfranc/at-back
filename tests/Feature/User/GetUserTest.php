@@ -1,10 +1,10 @@
 <?php
 
+namespace Tests\Feature\User;
+
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Testing\Fluent\AssertableJson;
 
 class GetUserTest extends TestCase
 {
@@ -17,10 +17,6 @@ class GetUserTest extends TestCase
 
         $response = $this->get('/api/users');
 
-
-        // $response->assertOk()->assertJson(fn (AssertableJson $json) =>
-        // $json->has('data')
-        //     ->missing('message'));
 
         $response->assertOk()
             ->assertJson(['data' => $users->toArray()], false);

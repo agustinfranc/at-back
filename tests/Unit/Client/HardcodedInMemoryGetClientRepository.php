@@ -1,15 +1,18 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Repositories\Client;
+namespace Tests\Unit\Client;
 
 use App\Models\Client;
 use App\Modules\Client\Interfaces\IGetClientRepository;
 use Illuminate\Support\Collection;
 
-class GetClientRepository implements IGetClientRepository
+class HardcodedInMemoryGetClientRepository implements IGetClientRepository
 {
+    // public function __construct(
+    //     $user
+    // ) {
+    // }
+
     public static function getAll(): Collection
     {
         return Client::all();

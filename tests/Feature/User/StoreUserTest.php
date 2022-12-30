@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Feature\User;
+
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -18,7 +20,7 @@ test('can store user', function () {
 
 
     $response
-        ->assertStatus(201)
+        ->assertCreated()
         ->assertJson(['data' => $user], false);
 });
 
@@ -31,6 +33,6 @@ test('can update user', function () {
 
 
     $response
-        ->assertStatus(200)
+        ->assertOk()
         ->assertJson(['data' => $user], false);
 });
