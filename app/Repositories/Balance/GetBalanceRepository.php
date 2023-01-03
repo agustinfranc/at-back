@@ -7,7 +7,7 @@ namespace App\Repositories\Balance;
 use App\Models\Assignment;
 use Illuminate\Database\Eloquent\Collection;
 
-class GetBalanceRepository
+final class GetBalanceRepository
 {
     public static function getClientBalances($clients): Collection
     {
