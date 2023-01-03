@@ -7,7 +7,7 @@ use App\Repositories\Balance\GetBalanceRepository;
 use App\Repositories\Client\GetClientRepository;
 use App\Repositories\Companion\GetCompanionRepository;
 
-class BalanceController extends Controller
+final class BalanceController extends Controller
 {
     public function __construct(
         private readonly GetAssignmentRepository $getAssignmentRepository,
