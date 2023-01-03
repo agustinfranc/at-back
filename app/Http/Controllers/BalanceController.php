@@ -6,6 +6,7 @@ use App\Repositories\Assignment\GetAssignmentRepository;
 use App\Repositories\Balance\GetBalanceRepository;
 use App\Repositories\Client\GetClientRepository;
 use App\Repositories\Companion\GetCompanionRepository;
+use Illuminate\Support\Collection;
 
 final class BalanceController extends Controller
 {
@@ -17,12 +18,12 @@ final class BalanceController extends Controller
     ) {
     }
 
-    public function getClientsBalance()
+    public function getClientsBalance(): Collection
     {
         return $this->getBalanceRepository::getClientBalances($this->getClientRepository::getAll());
     }
 
-    public function getCompanionsBalance()
+    public function getCompanionsBalance(): Collection
     {
         return $this->getBalanceRepository::getCompanionBalances($this->getCompanionRepository::getAll());
     }
