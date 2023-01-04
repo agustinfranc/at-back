@@ -25,11 +25,11 @@ final class GetBalanceRepository
 
   private static function calculateHours($assignments): int
   {
-    $totalHours = 0;
-    foreach ($assignments as $assignment) {
-      $totalHours += $assignment->hours;
-    };
-    return $totalHours;
+    if ($assignments->isEmpty()) return 0;
+
+    return $assignments->reduce(function ($totalHours, $assignment) {
+      return $totalHours + $assignment->hours;
+    });
   }
 
   public static function getCompanionBalances($companions): Collection
@@ -48,10 +48,10 @@ final class GetBalanceRepository
 
   private static function calculateAssignmentsTotal($assignments): float
   {
-    $assignmentTotal = 0;
-    foreach ($assignments as $assignment) {
-      $assignmentTotal += $assignment->client->rate * $assignment->hours;
-    }
-    return $assignmentTotal;
+    if ($assignments->isEmpty()) return 0;
+
+    return $assignments->reduce(function ($assignmentTotal, $assignment) {
+      return $assignmentTotal + $assignment->client->rate * $assignment->hours;
+    });
   }
 }
