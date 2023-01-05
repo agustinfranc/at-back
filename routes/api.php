@@ -47,6 +47,7 @@ Route::apiResources([
     'users' => UserController::class,
 ]);
 
-Route::get('balances/clients', [BalanceController::class, 'getClientsBalance']);
-
-Route::get('balances/companions', [BalanceController::class, 'getCompanionsBalance']);
+Route::prefix('balances')->group(function () {
+    Route::get('/clients', [BalanceController::class, 'getClientsBalance']);
+    Route::get('/companions', [BalanceController::class, 'getCompanionsBalance']);
+});
