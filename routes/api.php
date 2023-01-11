@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AssignmentTemplateController;
+use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanionController;
 use App\Http\Controllers\CreateAssignmentsFromTemplateController;
@@ -45,3 +46,8 @@ Route::post('/create-assignments-from-template', CreateAssignmentsFromTemplateCo
 Route::apiResources([
     'users' => UserController::class,
 ]);
+
+Route::prefix('balances')->group(function () {
+    Route::get('/clients', [BalanceController::class, 'getClientsBalance']);
+    Route::get('/companions', [BalanceController::class, 'getCompanionsBalance']);
+});
