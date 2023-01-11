@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories\Balance;
 
 use App\Models\Assignment;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 final class GetBalanceRepository
@@ -12,15 +13,21 @@ final class GetBalanceRepository
   public static function getClientBalances($clients): Collection
   {
     $clientsBalances = new Collection();
+    $current = Carbon::parse(date("Y-m-d"));
     $totalClientHours = 0;
     foreach ($clients as $client) {
-      $totalClientHours = self::calculateHours(Assignment::where('client_id', '=', $client->id)->get());
+      $totalClientHours = self::calculateHours(self::getClientAssignments($client, $current));
       $rate = $client->rate;
       if ($totalClientHours != 0) {
         $clientsBalances->push(['name' => $client->name, 'debt' => ($rate * $totalClientHours)]);
       }
     }
     return $clientsBalances;
+  }
+
+  private static function getClientAssignments($client, $current)
+  {
+    return Assignment::where('client_id', '=', $client->id)->whereMonth('date', $current)->whereYear('date', $current->year)->get();
   }
 
   private static function calculateHours($assignments): int
@@ -34,16 +41,21 @@ final class GetBalanceRepository
 
   public static function getCompanionBalances($companions): Collection
   {
-
+    $current = Carbon::parse(date("Y-m-d"));
     $companionsBalances = new Collection();
     foreach ($companions as $companion) {
-      $companionAssigments = Assignment::with(['client'])->where('companion_id', '=', $companion->id)->get();
+      $companionAssigments = self::getCompanionAssignments($companion, $current);
       $assignmentTotal = self::calculateAssignmentsTotal($companionAssigments);
       if ($assignmentTotal != 0) {
         $companionsBalances->push(['name' => $companion->name, 'debt' => $assignmentTotal]);
       }
     }
     return $companionsBalances;
+  }
+
+  private static function getCompanionAssignments($companion, $current)
+  {
+    return Assignment::with(['client'])->where('companion_id', '=', $companion->id)->whereMonth('date', $current->month)->whereYear('date', $current->year)->get();
   }
 
   private static function calculateAssignmentsTotal($assignments): float
