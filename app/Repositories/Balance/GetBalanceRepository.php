@@ -82,18 +82,16 @@ final class GetBalanceRepository
     {
         if ($companion->max_taxable > self::getCompanionTotalDebt($companion, $currentDate)) {
             return self::getCompanionTotalDebt($companion, $currentDate);
-        } else {
-            return $companion->max_taxable;
         }
+        return $companion->max_taxable;
     }
 
     private static function getCompanionNoTaxDebt($companion, $currentDate)
     {
         if ($companion->max_taxable > self::getCompanionTotalDebt($companion, $currentDate)) {
             return 0;
-        } else {
-            return self::getCompanionTotalDebt($companion, $currentDate) - $companion->max_taxable;
         }
+        return self::getCompanionTotalDebt($companion, $currentDate) - $companion->max_taxable;
     }
 
     private static function getCompanionAssignments($companion, $currentDate)
