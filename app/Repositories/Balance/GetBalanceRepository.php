@@ -21,9 +21,25 @@ final class GetBalanceRepository
                 fn ($client) =>
                 [
                     'name' => $client->name,
-                    'debt' => ($client->rate * self::calculateHours(self::getClientAssignments($client, $currentDate)))
+                    'taxable_debt' => (self::getClientTaxableDebt($client, $currentDate)),
+                    'no_tax_debt' => (self::getClientNoTaxDebt($client, $currentDate))
                 ]
             )->values();
+    }
+
+    private static function getClientTotalDebt($client, $currentDate)
+    {
+        return $client->rate * self::calculateHours(self::getClientAssignments($client, $currentDate));
+    }
+
+    private static function getClientTaxableDebt($client, $currentDate)
+    {
+        return self::getClientTotalDebt($client, $currentDate) * ($client->taxable / 100);
+    }
+
+    private static function getClientNoTaxDebt($client, $currentDate)
+    {
+        return self::getClientTotalDebt($client, $currentDate) - self::getClientTaxableDebt($client, $currentDate);
     }
 
     private static function getClientAssignments($client, $currentDate)
@@ -51,9 +67,33 @@ final class GetBalanceRepository
                 fn ($companion) =>
                 [
                     'name' => $companion->name,
-                    'debt' => self::calculateAssignmentsTotal(self::getCompanionAssignments($companion, $currentDate))
+                    'taxable_debt' => self::getCompanionTaxableDebt($companion, $currentDate),
+                    'no_tax_debt' => self::getCompanionNoTaxDebt($companion, $currentDate),
                 ]
             )->values();
+    }
+
+    private static function getCompanionTotalDebt($companion, $currentDate)
+    {
+        return self::calculateAssignmentsTotal(self::getCompanionAssignments($companion, $currentDate));
+    }
+
+    private static function getCompanionTaxableDebt($companion, $currentDate)
+    {
+        if ($companion->max_taxable > self::getCompanionTotalDebt($companion, $currentDate)) {
+            return self::getCompanionTotalDebt($companion, $currentDate);
+        } else {
+            return $companion->max_taxable;
+        }
+    }
+
+    private static function getCompanionNoTaxDebt($companion, $currentDate)
+    {
+        if ($companion->max_taxable > self::getCompanionTotalDebt($companion, $currentDate)) {
+            return 0;
+        } else {
+            return self::getCompanionTotalDebt($companion, $currentDate) - $companion->max_taxable;
+        }
     }
 
     private static function getCompanionAssignments($companion, $currentDate)
