@@ -20,11 +20,11 @@ final class BalanceController extends Controller
 
     public function getClientsBalance(): Collection
     {
-        return $this->getBalanceRepository::getClientBalances($this->getClientRepository::getAll());
+        return $this->getBalanceRepository->getClientBalances($this->getClientRepository::getAll());
     }
 
     public function getCompanionsBalance(): Collection
     {
-        return $this->getBalanceRepository::getCompanionBalances($this->getCompanionRepository::getAll());
+        return $this->getBalanceRepository->getCompanionBalances($this->getCompanionRepository::getAll());
     }
 }

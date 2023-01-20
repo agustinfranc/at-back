@@ -24,4 +24,14 @@ class GetAssignmentRepository
             ->where('companion_id', $companionId)
             ->first();
     }
+
+    public static function getClientAssignments($client, $currentDate)
+    {
+        return Assignment::where('client_id', '=', $client->id)->whereMonth('date', $currentDate)->whereYear('date', $currentDate->year)->get();
+    }
+
+    public static function getCompanionAssignments($companion, $currentDate)
+    {
+        return Assignment::with(['client'])->where('companion_id', '=', $companion->id)->whereMonth('date', $currentDate->month)->whereYear('date', $currentDate->year)->get();
+    }
 }
