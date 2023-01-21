@@ -65,7 +65,6 @@ final class GetBalanceRepository
     {
         $currentDate = Carbon::parse(date("Y-m-d"));
 
-
         return $companions
             ->filter(fn ($companion) => self::calculateAssignmentsTotal(self::getCompanionAssignments($companion, $currentDate)) > 0)
             ->map(
