@@ -18,4 +18,9 @@ class GetUserRepository
     {
         return User::with(['role'])->find($id);
     }
+
+    public static function getByEmail(string $email): User
+    {
+        return User::where('email', $email)->get();
+    }
 }
