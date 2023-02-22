@@ -21,6 +21,6 @@ class GetUserRepository
 
     public static function getByEmail(string $email): User
     {
-        return User::where('email', $email)->get();
+        return User::where('email', $email)->get()->first();
     }
 }
