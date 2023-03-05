@@ -28,27 +28,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/token', [LoginController::class, 'authenticate'])->name('login');
 
-Route::apiResources([
-    'clients' => ClientController::class,
-]);
 
-Route::apiResources([
-    'companions' => CompanionController::class,
-]);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResources([
+        'clients' => ClientController::class,
+        'companions' => CompanionController::class,
+        'assignments' => AssignmentController::class,
+        'assignment-templates' => AssignmentTemplateController::class,
+        'users' => UserController::class,
 
-Route::apiResources([
-    'assignments' => AssignmentController::class,
-]);
-
-Route::apiResources([
-    'assignment-templates' => AssignmentTemplateController::class,
-]);
+    ]);
+});
 
 Route::post('/create-assignments-from-template', CreateAssignmentsFromTemplateController::class);
-
-Route::apiResources([
-    'users' => UserController::class,
-]);
 
 Route::prefix('balances')->group(function () {
     Route::get('/clients', [BalanceController::class, 'getClientsBalance']);
