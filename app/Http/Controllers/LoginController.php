@@ -26,6 +26,18 @@ class LoginController extends Controller
 
     $user = $repository->getOne($user->id);
 
-    return $user;
+    return response()->json(['token' => $user->createToken($request->device_name ?? 'generic')->plainTextToken]);
+  }
+
+  public function me(Request $request)
+  {
+    $user = $request->user();
+
+    return response()->json(['user' => $user]);
+  }
+
+  public function logout(Request $request)
+  {
+    $request->user()->currentAccessToken()->delete();
   }
 }
