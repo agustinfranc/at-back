@@ -24,8 +24,6 @@ class LoginController extends Controller
       return response()->json(['error' => 'Usuario y/o contraseña incorrectos'], 401);
     }
 
-    $user = $repository->getOne($user->id);
-
     return response()->json(['token' => $user->createToken($request->device_name ?? 'generic')->plainTextToken]);
   }
 
