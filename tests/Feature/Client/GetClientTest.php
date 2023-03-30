@@ -20,7 +20,7 @@ class GetClientTest extends TestCase
 
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user, 'sanctum')->get('/api/auth/clients');
+        $response = $this->actingAs($user, 'sanctum')->get('/api/clients');
 
         $this->assertAuthenticated('sanctum');
         //$response = $this->get('/api/clients');
@@ -34,9 +34,10 @@ class GetClientTest extends TestCase
         $client = Client::factory()->create();
         $clientsArrayFromResource = json_decode((new ClientResource($client))->toJson(), true);
 
+        $user = User::factory()->create();
+        $response = $this->actingAs($user, 'sanctum')->get('/api/clients/' . $client->id);
 
-        $response = $this->get('/api/clients/' . $client->id);
-
+        $this->assertAuthenticated('sanctum');
 
         $response->assertOk()
             ->assertJson(['data' => $clientsArrayFromResource], false);
