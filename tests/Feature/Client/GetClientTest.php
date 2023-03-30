@@ -23,7 +23,6 @@ class GetClientTest extends TestCase
         $response = $this->actingAs($user, 'sanctum')->get('/api/clients');
 
         $this->assertAuthenticated('sanctum');
-        //$response = $this->get('/api/clients');
 
         $response->assertOk()
             ->assertJson(['data' => $clientsArrayFromResource], false);
