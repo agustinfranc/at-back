@@ -14,9 +14,11 @@ class GetUserTest extends TestCase
     {
         $users = User::factory()->count(10)->create();
 
+        $user = User::factory()->create();
 
-        $response = $this->get('/api/users');
+        $response = $this->actingAs($user, 'sanctum')->get('/api/users');
 
+        $this->assertAuthenticated('sanctum');
 
         $response->assertOk()
             ->assertJson(['data' => $users->toArray()], false);
@@ -26,9 +28,9 @@ class GetUserTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $response = $this->actingAs($user, 'sanctum')->get('/api/users/' . $user->id);
 
-        $response = $this->get('/api/users/' . $user->id);
-
+        $this->assertAuthenticated('sanctum');
 
         $response->assertOk()
             ->assertJson(['data' => $user->toArray()], false);
