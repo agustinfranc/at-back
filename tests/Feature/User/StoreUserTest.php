@@ -20,6 +20,7 @@ test('can store user', function () {
 
     $response = $this->actingAs($userAuth, 'sanctum')->post('/api/users/', $request);
 
+
     $this->assertAuthenticated('sanctum');
 
     $response
