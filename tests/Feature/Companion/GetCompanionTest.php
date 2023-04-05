@@ -19,6 +19,7 @@ class GetCompanionTest extends TestCase
 
         $response = $this->actingAs($user, 'sanctum')->get('/api/companions');
 
+
         $this->assertAuthenticated('sanctum');
 
         $response->assertOk()
@@ -32,6 +33,7 @@ class GetCompanionTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user, 'sanctum')->get('/api/companions/' . $companion->id);
+
 
         $this->assertAuthenticated('sanctum');
 

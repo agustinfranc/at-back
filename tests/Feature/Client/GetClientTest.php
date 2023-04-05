@@ -22,6 +22,7 @@ class GetClientTest extends TestCase
 
         $response = $this->actingAs($user, 'sanctum')->get('/api/clients');
 
+
         $this->assertAuthenticated('sanctum');
 
         $response->assertOk()
@@ -35,6 +36,7 @@ class GetClientTest extends TestCase
 
         $user = User::factory()->create();
         $response = $this->actingAs($user, 'sanctum')->get('/api/clients/' . $client->id);
+
 
         $this->assertAuthenticated('sanctum');
 

@@ -36,6 +36,7 @@ test('can update user', function () {
 
     $response = $this->actingAs($userAuth, 'sanctum')->put('/api/users/' . $user['id'], $user);
 
+
     $this->assertAuthenticated('sanctum');
 
     $response

@@ -18,6 +18,7 @@ class GetUserTest extends TestCase
 
         $response = $this->actingAs($user, 'sanctum')->get('/api/users');
 
+
         $this->assertAuthenticated('sanctum');
 
         $response->assertOk()
@@ -29,6 +30,7 @@ class GetUserTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user, 'sanctum')->get('/api/users/' . $user->id);
+
 
         $this->assertAuthenticated('sanctum');
 

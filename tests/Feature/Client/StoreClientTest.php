@@ -22,6 +22,7 @@ class StoreClientTest extends TestCase
 
         $response = $this->actingAs($user, 'sanctum')->postJson('/api/clients', $client);
 
+
         $this->assertAuthenticated('sanctum');
 
         $response->assertCreated()
@@ -37,6 +38,7 @@ class StoreClientTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user, 'sanctum')->putJson('/api/clients/' . $client->id, $client->toArray());
+
 
         $this->assertAuthenticated('sanctum');
 
