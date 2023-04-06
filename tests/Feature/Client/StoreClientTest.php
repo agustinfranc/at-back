@@ -4,6 +4,7 @@ namespace Tests\Feature\Client;
 
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +18,12 @@ class StoreClientTest extends TestCase
     {
         $client = Client::factory()->make()->toArray();
 
+        $user = User::factory()->create();
 
-        $response = $this->postJson('/api/clients', $client);
+        $response = $this->actingAs($user, 'sanctum')->postJson('/api/clients', $client);
 
+
+        $this->assertAuthenticated('sanctum');
 
         $response->assertCreated()
             ->assertJson(['data' => $client], false);
@@ -31,9 +35,12 @@ class StoreClientTest extends TestCase
         $client->name = 'George';
         $clientsArrayFromResource = json_decode((new ClientResource($client))->toJson(), true);
 
+        $user = User::factory()->create();
 
-        $response = $this->putJson('/api/clients/' . $client->id, $client->toArray());
+        $response = $this->actingAs($user, 'sanctum')->putJson('/api/clients/' . $client->id, $client->toArray());
 
+
+        $this->assertAuthenticated('sanctum');
 
         $response
             ->assertOk()
