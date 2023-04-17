@@ -28,8 +28,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/token', [LoginController::class, 'authenticate'])->name('login');
 
-
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
     Route::apiResources([
         'clients' => ClientController::class,
         'companions' => CompanionController::class,
