@@ -13,9 +13,9 @@ class LoginController extends Controller
     public function authenticate(Request $request, GetUserRepository $repository)
     {
         $validatedData = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-        'device_name' => 'nullable',
+            'email' => 'required|email',
+            'password' => 'required',
+            'device_name' => 'nullable',
         ]);
 
         $user = $repository->getByEmail($validatedData['email']);
@@ -24,7 +24,10 @@ class LoginController extends Controller
             return response()->json(['error' => 'Usuario y/o contraseña incorrectos'], 401);
         }
 
-        return response()->json(['token' => $user->createToken($request->device_name ?? 'generic')->plainTextToken]);
+        return response()->json([
+            'token' => $user->createToken($request->device_name ?? 'generic')->plainTextToken,
+            'user' => $user,
+        ]);
     }
 
     public function me(Request $request)
