@@ -15,9 +15,13 @@ test('can store user', function () {
     $request['password'] = 'password';
     $request['repeate_password'] = 'password';
 
+    $userAuth = User::factory()->create();
 
-    $response = $this->post('/api/users/', $request);
 
+    $response = $this->actingAs($userAuth, 'sanctum')->post('/api/users/', $request);
+
+
+    $this->assertAuthenticated('sanctum');
 
     $response
         ->assertCreated()
@@ -28,9 +32,12 @@ test('can update user', function () {
     $user = User::factory()->create()->toArray();
     $user['name'] = 'George';
 
+    $userAuth = User::factory()->create();
 
-    $response = $this->put('/api/users/' . $user['id'], $user);
+    $response = $this->actingAs($userAuth, 'sanctum')->put('/api/users/' . $user['id'], $user);
 
+
+    $this->assertAuthenticated('sanctum');
 
     $response
         ->assertOk()
