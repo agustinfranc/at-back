@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Hash;
 
 class StoreUserRepository
 {
-    public static function store(Collection $input, User $user): User
+    public static function save(Collection $input, User $user): User
     {
         $input = self::forgetPasswordWhenIsEmptytUpdate($input);
 
         $user->fill($input->all());
 
-        $user->password = Hash::make($input->password);
+        $user->password = Hash::make($input->get('password'));
 
         $user->save();
 

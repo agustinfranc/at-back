@@ -38,7 +38,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         return new UserResource(
-            $this->storeRepository::store($request->collect(), new User())
+            $this->storeRepository::save($request->collect(), new User())
         );
     }
 
@@ -63,7 +63,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         return new UserResource(
-            $this->storeRepository::store($request->collect(), $user)
+            $this->storeRepository::save($request->collect(), $user)
         );
     }
 
