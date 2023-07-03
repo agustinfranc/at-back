@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repositories\Assignment;
 
-use App\Models\Assignment;
 use App\Models\AssignmentTemplate;
 use App\Repositories\TemplateMigration\GetTemplateMigrationRepository;
 use App\Repositories\TemplateMigration\StoreTemplateMigrationRepository;
