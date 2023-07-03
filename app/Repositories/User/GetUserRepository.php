@@ -14,13 +14,13 @@ class GetUserRepository
         return User::with(['role'])->get();
     }
 
-    public static function getOne(int $id): User
+    public static function getOne(int $id): ?User
     {
         return User::with(['role'])->find($id);
     }
 
-    public static function getByEmail(string $email): User
+    public static function getByEmail(string $email): ?User
     {
-        return User::where('email', $email)->get()->first();
+        return User::where('email', $email)->first();
     }
 }

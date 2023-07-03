@@ -6,6 +6,7 @@ namespace App\Repositories\User;
 
 use App\Models\User;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Hash;
 
 class StoreUserRepository
 {
@@ -14,6 +15,8 @@ class StoreUserRepository
         $input = self::forgetPasswordWhenIsEmptytUpdate($input);
 
         $user->fill($input->all());
+
+        $user->password = Hash::make($input->password);
 
         $user->save();
 
