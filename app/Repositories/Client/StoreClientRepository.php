@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 class StoreClientRepository
 {
-    public static function store(Collection $input, Client $client): Client
+    public static function save(Collection $input, Client $client): Client
     {
         $client->fill($input->all());
 

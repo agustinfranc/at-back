@@ -39,7 +39,7 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
         return new ClientResource(
-            $this->storeRepository->store($request->collect(), new Client())
+            $this->storeRepository->save($request->collect(), new Client())
         );
     }
 
@@ -64,7 +64,7 @@ class ClientController extends Controller
     public function update(UpdateClientRequest $request, Client $client)
     {
         return new ClientResource(
-            $this->storeRepository::store($request->collect(), $client)
+            $this->storeRepository::save($request->collect(), $client)
         );
     }
 

@@ -36,7 +36,7 @@ class CompanionController extends Controller
     public function store(StoreCompanionRequest $request)
     {
         return new CompanionResource(
-            $this->storeRepository::store($request->collect(), new Companion())
+            $this->storeRepository::save($request->collect(), new Companion())
         );
     }
 
@@ -61,7 +61,7 @@ class CompanionController extends Controller
     public function update(UpdateCompanionRequest $request, Companion $companion)
     {
         return new CompanionResource(
-            $this->storeRepository::store($request->collect(), $companion)
+            $this->storeRepository::save($request->collect(), $companion)
         );
     }
 

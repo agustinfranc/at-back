@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class StoreCompanionRepository
 {
-    public static function store(Collection $input, Companion $companion): Companion
+    public static function save(Collection $input, Companion $companion): Companion
     {
         $companion->fill($input->all());
 

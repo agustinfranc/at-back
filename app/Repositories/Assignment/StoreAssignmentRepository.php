@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class StoreAssignmentRepository
 {
-    public static function store(Collection $assignment)
+    public static function store(Collection $assignment): Assignment
     {
         return Assignment::updateOrCreate(['id' => $assignment->get('id')], $assignment->all());
     }
