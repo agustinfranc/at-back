@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->float('companion_rate', 10, 2)->nullable()->after('rate');
+            $table->float('companion_rate', 10, 2)->default(0)->after('rate');
         });
     }
 
