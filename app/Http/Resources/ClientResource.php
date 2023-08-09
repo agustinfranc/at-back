@@ -24,6 +24,7 @@ class ClientResource extends JsonResource
             'extra_phone_bis' => $this->extra_phone_bis,
             'extra_phone_bis_reference' => $this->extra_phone_bis_reference,
             'rate' => $this->rate,
+            'companion_rate' => $this->companion_rate,
             'taxable' => $this->taxable,
             'comments' => $this->comments,
             'address' => $this->address,

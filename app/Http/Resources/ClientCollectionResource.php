@@ -20,6 +20,7 @@ class ClientCollectionResource extends JsonResource
             'dni' => $this->dni,
             'phone' => $this->phone,
             'rate' => $this->rate,
+            'companion_rate' => $this->companion_rate,
             'taxable' => $this->taxable,
             'guardian_name' => $this->guardian_name,
         ];

@@ -23,6 +23,7 @@ class ClientFactory extends Factory
             'dni' => fake()->numberBetween('1', '99999999'),
             'phone' => (string) fake()->numberBetween('1', '99999999'),
             'rate' => fake()->numberBetween('1', '9999'),
+            'companion_rate' => fake()->numberBetween('1', '9999'),
             'taxable' => fake()->numberBetween('1', '100'),
             'comments' => fake()->words(20, true),
             'address' => fake()->words(2, true),
