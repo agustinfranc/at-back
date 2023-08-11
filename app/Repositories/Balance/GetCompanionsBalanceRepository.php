@@ -61,7 +61,7 @@ final class GetCompanionsBalanceRepository
     {
         return $assignments->reduce(
             fn ($assignmentTotal, $assignment) =>
-            $assignmentTotal + $assignment->client->rate * $assignment->hours,
+            $assignmentTotal + $assignment->client->companion_rate * $assignment->hours,
             0
         );
     }

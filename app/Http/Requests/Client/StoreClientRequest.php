@@ -32,6 +32,7 @@ class StoreClientRequest extends FormRequest
             'extra_phone_bis' => 'nullable|string|between:1,100',
             'extra_phone_bis_reference' => 'nullable|string|between:1,100',
             'rate' => 'nullable|numeric',
+            'copmpanion_rate' => 'numeric',
             'taxable' => 'nullable|integer|digits_between:1,3',
             'comments' => 'nullable|string|between:1,280',
             'address' => 'nullable|string|between:1,80',
